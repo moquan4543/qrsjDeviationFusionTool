@@ -1,0 +1,1005 @@
+[
+  {
+    "id": "A001",
+    "name": "電蠑螈",
+    "mainSkill": "雷神之怒 / 靜電場",
+    "ultimateId": "雷神之怒",
+    "passiveId": "靜電場",
+    "learnableSkills": [
+      "電能彈",
+      "雷擊",
+      "脈衝電球",
+      "電能散射",
+      "元素強化",
+      "連鎖閃電"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A002",
+    "name": "守夜燈",
+    "mainSkill": "毀滅光束 / 多重施法",
+    "ultimateId": "毀滅光束",
+    "passiveId": "多重施法",
+    "learnableSkills": [
+      "超感彈",
+      "超感射線",
+      "威攝",
+      "物理強化",
+      "物理衝擊波",
+      "幸運之燈"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A003",
+    "name": "迷你黃衣",
+    "mainSkill": "遙遠歡宴 / 共感之觸",
+    "ultimateId": "遙遠歡宴",
+    "passiveId": "共感之觸",
+    "learnableSkills": [
+      "超感彈",
+      "時間加速",
+      "物理強化",
+      "療癒",
+      "扭曲空間",
+      "外神之觸"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A004",
+    "name": "迷你奇點",
+    "mainSkill": "黑洞奔流 / 萬有引力",
+    "ultimateId": "黑洞奔流",
+    "passiveId": "萬有引力",
+    "learnableSkills": [
+      "雷擊",
+      "元素強化",
+      "脈衝電球",
+      "脈衝射線",
+      "扭曲空間",
+      "黑洞噴流"
+    ],
+    "traitSlots": 5,
+    "weight": 1
+  },
+  {
+    "id": "A005",
+    "name": "上界之卵",
+    "mainSkill": "天使守護 / 卵殼保護",
+    "ultimateId": "天使守護",
+    "passiveId": "卵殼保護",
+    "learnableSkills": [
+      "火焰彈",
+      "隕星",
+      "脈衝射線",
+      "灼燒光環",
+      "挑釁",
+      "上界庇護"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A006",
+    "name": "皆斬",
+    "mainSkill": "無敵斬 / 武士之心",
+    "ultimateId": "無敵斬",
+    "passiveId": "武士之心",
+    "learnableSkills": [
+      "橫掃",
+      "迴旋斬",
+      "旋風",
+      "閃現",
+      "閃避",
+      "踏影奇襲"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A007",
+    "name": "願望先生",
+    "mainSkill": "投幣式火力覆蓋 / 大贏家",
+    "ultimateId": "投幣式火力覆蓋",
+    "passiveId": "大贏家",
+    "learnableSkills": [
+      "高速連射",
+      "震盪躍遷",
+      "狙擊要害",
+      "扭曲空間",
+      "自我充能",
+      "命運硬幣"
+    ],
+    "traitSlots": 5,
+    "weight": 1
+  },
+  {
+    "id": "A008",
+    "name": "蝶之夢",
+    "mainSkill": "希望信標 / 共情",
+    "ultimateId": "希望信標",
+    "passiveId": "共情",
+    "learnableSkills": [
+      "治療彈",
+      "充能光環",
+      "異能導管",
+      "群體元素強化",
+      "群體物理強化",
+      "淨火之蝶"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A009",
+    "name": "紅龍",
+    "mainSkill": "紅龍轟炸 / 火焰女王",
+    "ultimateId": "紅龍轟炸",
+    "passiveId": "火焰女王",
+    "learnableSkills": [
+      "噴射火焰",
+      "爆炎彈",
+      "隕星",
+      "灼燒光環",
+      "時間加速",
+      "魔法火焰飛行"
+    ],
+    "traitSlots": 5,
+    "weight": 1
+  },
+  {
+    "id": "A010",
+    "name": "凝視的黑貓",
+    "mainSkill": "要豹豹 / 狩獵",
+    "ultimateId": "要豹豹",
+    "passiveId": "狩獵",
+    "learnableSkills": [
+      "超感彈",
+      "扭曲空間",
+      "閃避",
+      "物理衝擊波",
+      "抗拒消亡",
+      "黑貓的凝視"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A011",
+    "name": "青龍",
+    "mainSkill": "地獄廚房 / 戰地烹飪",
+    "ultimateId": "地獄廚房",
+    "passiveId": "戰地烹飪",
+    "learnableSkills": [
+      "噴射火焰",
+      "爆炎彈",
+      "元素強化",
+      "隕星",
+      "火焰衝擊",
+      "BBQ"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A012",
+    "name": "冬靈",
+    "mainSkill": "凜冬冰魄 / 冰寒透骨",
+    "ultimateId": "凜冬冰魄",
+    "passiveId": "冰寒透骨",
+    "learnableSkills": [
+      "冰裂彈",
+      "冰晶潛刺",
+      "冰霜衛星",
+      "時間加速",
+      "元素強化",
+      "冰晶千刃"
+    ],
+    "traitSlots": 5,
+    "weight": 1
+  },
+  {
+    "id": "A013",
+    "name": "異維大貓",
+    "mainSkill": "貓貓集合 / 貓的品德",
+    "ultimateId": "貓貓集合",
+    "passiveId": "貓的品德",
+    "learnableSkills": [
+      "橫掃",
+      "衝鋒",
+      "重壓",
+      "快速充能",
+      "充能光環",
+      "貓貓拳"
+    ],
+    "traitSlots": 5,
+    "weight": 1
+  },
+  {
+    "id": "A014",
+    "name": "匠師之手",
+    "mainSkill": "生命修復 / 完善修理",
+    "ultimateId": "生命修復",
+    "passiveId": "完善修理",
+    "learnableSkills": [
+      "猛擊",
+      "迴旋斬",
+      "自我療癒",
+      "快速充能",
+      "療癒光環",
+      "承傷連結"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A015",
+    "name": "巫毒娃娃",
+    "mainSkill": "厄運詛咒 / 生鏽的鐵釘",
+    "ultimateId": "厄運詛咒",
+    "passiveId": "生鏽的鐵釘",
+    "learnableSkills": [
+      "超感彈",
+      "絲網牽引",
+      "時間加速",
+      "抗拒消亡",
+      "承傷連結",
+      "腐蝕光環"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A016",
+    "name": "門扉",
+    "mainSkill": "異界之門 / 維度積攢",
+    "ultimateId": "異界之門",
+    "passiveId": "維度積攢",
+    "learnableSkills": [
+      "脈衝電球",
+      "繭化",
+      "閃電穿刺",
+      "脈衝射線",
+      "挑釁",
+      "虛空領域"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A017",
+    "name": "惡臭球根",
+    "mainSkill": "混亂毒霧 / 出芽",
+    "ultimateId": "混亂毒霧",
+    "passiveId": "出芽",
+    "learnableSkills": [
+      "超感彈",
+      "衝鋒",
+      "亂射",
+      "繭化",
+      "抗拒消亡",
+      "扭曲空間"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A018",
+    "name": "空之子",
+    "mainSkill": "風牆 / 湍流",
+    "ultimateId": "風牆",
+    "passiveId": "湍流",
+    "learnableSkills": [
+      "超感彈",
+      "超感射線",
+      "旋風",
+      "穿透衝鋒",
+      "重壓",
+      "群體物理強化"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A019",
+    "name": "永恆烈陽",
+    "mainSkill": "星核墜落 / 殘陽怒火",
+    "ultimateId": "星核墜落",
+    "passiveId": "殘陽怒火",
+    "learnableSkills": [
+      "火焰彈",
+      "火焰衝擊",
+      "隕星",
+      "爆炸",
+      "元素強化",
+      "充能光環"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A020",
+    "name": "低語孤狼",
+    "mainSkill": "孤狼咆哮 / 恐懼之牙",
+    "ultimateId": "孤狼咆哮",
+    "passiveId": "恐懼之牙",
+    "learnableSkills": [
+      "猛擊",
+      "穿透衝鋒",
+      "橫掃",
+      "閃爍突襲",
+      "物理強化",
+      "時間加速"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A021",
+    "name": "氣球狗",
+    "mainSkill": "輕飄飄大遊行 / 充氣",
+    "ultimateId": "輕飄飄大遊行",
+    "passiveId": "充氣",
+    "learnableSkills": [
+      "猛擊",
+      "衝鋒",
+      "迴旋斬",
+      "爆炸",
+      "力量祭禮",
+      "超級爆炸"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A022",
+    "name": "狐主任",
+    "mainSkill": "獸哨召喚 / 高效養殖",
+    "ultimateId": "獸哨召喚",
+    "passiveId": "高效養殖",
+    "learnableSkills": [
+      "超感彈",
+      "治療彈",
+      "療癒光環",
+      "治療連結",
+      "群體物理強化",
+      "動物專家"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A023",
+    "name": "喚生靈",
+    "mainSkill": "咻，咻，咻! / 神箭手",
+    "ultimateId": "咻，咻，咻!",
+    "passiveId": "神箭手",
+    "learnableSkills": [
+      "冰裂彈",
+      "元素強化",
+      "冰霜漩渦",
+      "雨箭",
+      "閃避",
+      "萬箭齊發"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A024",
+    "name": "鯨狗",
+    "mainSkill": "水下世界 / 水牢",
+    "ultimateId": "水下世界",
+    "passiveId": "水牢",
+    "learnableSkills": [
+      "冰裂彈",
+      "護盾",
+      "冰霜漩渦",
+      "抗拒消亡",
+      "冰晶潛刺",
+      "巨鯨來襲"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A025",
+    "name": "願望箱",
+    "mainSkill": "願望收集 / 傾聽",
+    "ultimateId": "願望收集",
+    "passiveId": "傾聽",
+    "learnableSkills": [
+      "電能散射",
+      "火焰衝擊",
+      "冰霜漩渦",
+      "物理衝擊波",
+      "抗拒消亡",
+      "閃現"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A026",
+    "name": "快照",
+    "mainSkill": "定格視界 / 跟拍",
+    "ultimateId": "定格視界",
+    "passiveId": "跟拍",
+    "learnableSkills": [
+      "高速連射",
+      "亂射",
+      "狙擊要害",
+      "閃避",
+      "療癒",
+      "超感射線"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A027",
+    "name": "魚行員",
+    "mainSkill": "魚躍 / 捕魚",
+    "ultimateId": "魚躍",
+    "passiveId": "捕魚",
+    "learnableSkills": [
+      "電能彈",
+      "閃電穿刺",
+      "電能散射",
+      "元素強化",
+      "自我充能",
+      "魚雷"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A028",
+    "name": "焦油布丁",
+    "mainSkill": "巨大汽油彈 / 原油挖掘",
+    "ultimateId": "巨大汽油彈",
+    "passiveId": "原油挖掘",
+    "learnableSkills": [
+      "火焰彈",
+      "元素強化",
+      "爆炎彈",
+      "灼燒光環",
+      "隕星",
+      "原油溢出"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A029",
+    "name": "奪命兔",
+    "mainSkill": "謝幕禮儀 / 一擊奪命",
+    "ultimateId": "謝幕禮儀",
+    "passiveId": "一擊奪命",
+    "learnableSkills": [
+      "猛擊",
+      "橫掃",
+      "時間加速",
+      "閃爍突襲",
+      "閃現",
+      "刀鋒宣告"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A030",
+    "name": "量子蝸牛",
+    "mainSkill": "量子充能 / 瘋狂蝸牛",
+    "ultimateId": "量子充能",
+    "passiveId": "瘋狂蝸牛",
+    "learnableSkills": [
+      "冰裂彈",
+      "閃電穿刺",
+      "冰晶潛刺",
+      "時間加速",
+      "異能導管",
+      "元素強化"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A031",
+    "name": "雨人",
+    "mainSkill": "驟雨 / 淋雨",
+    "ultimateId": "驟雨",
+    "passiveId": "淋雨",
+    "learnableSkills": [
+      "冰裂彈",
+      "繭化",
+      "冰霜漩渦",
+      "雨箭",
+      "抗拒消亡",
+      "雨夜殺機"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A032",
+    "name": "龐然大菇",
+    "mainSkill": "龐然重壓 / 天恩",
+    "ultimateId": "龐然重壓",
+    "passiveId": "天恩",
+    "learnableSkills": [
+      "猛擊",
+      "迴旋斬",
+      "重壓",
+      "挑釁",
+      "護盾",
+      "抗拒消亡"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A033",
+    "name": "木工河狸",
+    "mainSkill": "傑作旋風 / 男兒本色",
+    "ultimateId": "傑作旋風",
+    "passiveId": "男兒本色",
+    "learnableSkills": [
+      "猛擊",
+      "橫掃",
+      "穿透衝鋒",
+      "繭化",
+      "閃爍突襲",
+      "河狸連打"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A034",
+    "name": "胡桃夾子",
+    "mainSkill": "肅清指令 / 錫兵不死",
+    "ultimateId": "肅清指令",
+    "passiveId": "錫兵不死",
+    "learnableSkills": [
+      "高速連射",
+      "亂射",
+      "狙擊要害",
+      "時間加速",
+      "抗拒消亡",
+      "繭化"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A035",
+    "name": "核子打火機",
+    "mainSkill": "原子天啟 / 傳火",
+    "ultimateId": "原子天啟",
+    "passiveId": "傳火",
+    "learnableSkills": [
+      "火焰彈",
+      "火焰衝擊",
+      "爆炎彈",
+      "力量祭禮",
+      "異能導管",
+      "群體元素強化"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A036",
+    "name": "薑餅屋",
+    "mainSkill": "感恩節快樂 / 限時投餵",
+    "ultimateId": "感恩節快樂",
+    "passiveId": "限時投餵",
+    "learnableSkills": [
+      "超感彈",
+      "繭化",
+      "旋風",
+      "快速充能",
+      "閃避",
+      "糖衣砲彈"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A037",
+    "name": "工號37",
+    "mainSkill": "工作廣播 / 機器人領袖",
+    "ultimateId": "工作廣播",
+    "passiveId": "機器人領袖",
+    "learnableSkills": [
+      "超感彈",
+      "護盾",
+      "繭化",
+      "衝鋒",
+      "超感射線",
+      "緊急護盾"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A038",
+    "name": "熊醫生",
+    "mainSkill": "醫療靈藥 / 醫者仁心",
+    "ultimateId": "醫療靈藥",
+    "passiveId": "醫者仁心",
+    "learnableSkills": [
+      "猛擊",
+      "治療彈",
+      "衝鋒",
+      "療癒",
+      "快速充能",
+      "療癒光環"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A039",
+    "name": "空間魔方",
+    "mainSkill": "亂序空間 / 鬆弛感",
+    "ultimateId": "亂序空間",
+    "passiveId": "鬆弛感",
+    "learnableSkills": [
+      "超感彈",
+      "超感射線",
+      "震盪躍遷",
+      "絲網牽引",
+      "扭曲空間",
+      "異能導管"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A040",
+    "name": "枯榮種子",
+    "mainSkill": "狂暴種子 / 寄生",
+    "ultimateId": "狂暴種子",
+    "passiveId": "寄生",
+    "learnableSkills": [
+      "火焰彈",
+      "抗拒消亡",
+      "爆炎彈",
+      "護盾",
+      "力量祭禮",
+      "腐蝕光環"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A041",
+    "name": "極寒水母",
+    "mainSkill": "低溫煙霧 / 冰心",
+    "ultimateId": "低溫煙霧",
+    "passiveId": "冰心",
+    "learnableSkills": [
+      "冰裂彈",
+      "冰晶潛刺",
+      "冰霜漩渦",
+      "冰霜衛星",
+      "群體元素強化",
+      "緊急護盾"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A042",
+    "name": "遠歸之蝶",
+    "mainSkill": "靈蝶風暴 / 閃避姿態",
+    "ultimateId": "靈蝶風暴",
+    "passiveId": "閃避姿態",
+    "learnableSkills": [
+      "猛擊",
+      "穿透衝鋒",
+      "震盪躍遷",
+      "旋風",
+      "物理強化",
+      "閃避"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A043",
+    "name": "迪斯可球",
+    "mainSkill": "聚光燈 / 不如跳舞",
+    "ultimateId": "聚光燈",
+    "passiveId": "不如跳舞",
+    "learnableSkills": [
+      "超感彈",
+      "治療彈",
+      "狙擊要害",
+      "震盪躍遷",
+      "異能導管",
+      "治療連結"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A044",
+    "name": "發條青蛙",
+    "mainSkill": "發條蹦 / 上發條",
+    "ultimateId": "發條蹦",
+    "passiveId": "上發條",
+    "learnableSkills": [
+      "猛擊",
+      "繭化",
+      "迴旋斬",
+      "重壓",
+      "挑釁",
+      "衝鋒"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A045",
+    "name": "電鰻",
+    "mainSkill": "高壓電環 / 電能回饋",
+    "ultimateId": "高壓電環",
+    "passiveId": "電能回饋",
+    "learnableSkills": [
+      "電能彈",
+      "雷擊",
+      "閃電穿刺",
+      "電能散射",
+      "快速充能",
+      "元素強化"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A046",
+    "name": "活性凝膠",
+    "mainSkill": "凝膠護盾 / 活化",
+    "ultimateId": "凝膠護盾",
+    "passiveId": "活化",
+    "learnableSkills": [
+      "治療彈",
+      "療癒",
+      "超感彈",
+      "重壓",
+      "繭化",
+      "療癒光環"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A047",
+    "name": "捕夢網",
+    "mainSkill": "夢境羅網 / 今夜無夢",
+    "ultimateId": "夢境羅網",
+    "passiveId": "今夜無夢",
+    "learnableSkills": [
+      "旋風",
+      "震盪躍遷",
+      "絲網牽引",
+      "扭曲空間",
+      "閃避",
+      "快速充能"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A048",
+    "name": "乖乖兔",
+    "mainSkill": "兔兔蹲防 / 童話守護",
+    "ultimateId": "兔兔蹲防",
+    "passiveId": "童話守護",
+    "learnableSkills": [
+      "猛擊",
+      "衝鋒",
+      "療癒",
+      "繭化",
+      "挑釁",
+      "抗拒消亡"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A049",
+    "name": "蜂團團",
+    "mainSkill": "採花大盜 / 大豐收",
+    "ultimateId": "採花大盜",
+    "passiveId": "大豐收",
+    "learnableSkills": [
+      "超感彈",
+      "治療彈",
+      "療癒",
+      "快速充能",
+      "旋風",
+      "療癒光環"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A050",
+    "name": "一碗美味",
+    "mainSkill": "十里飄香 / 瓷器",
+    "ultimateId": "十里飄香",
+    "passiveId": "瓷器",
+    "learnableSkills": [
+      "超感彈",
+      "繭化",
+      "重壓",
+      "震盪躍遷",
+      "衝鋒",
+      "自我充能"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A051",
+    "name": "元素小子",
+    "mainSkill": "礦石粉碎流程 / 牛馬意志",
+    "ultimateId": "礦石粉碎流程",
+    "passiveId": "牛馬意志",
+    "learnableSkills": [
+      "猛擊",
+      "挑釁",
+      "衝鋒",
+      "護盾",
+      "繭化",
+      "重壓"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A052",
+    "name": "聯合體",
+    "mainSkill": "解體 / 隱藏感知",
+    "ultimateId": "解體",
+    "passiveId": "隱藏感知",
+    "learnableSkills": [
+      "電能彈",
+      "雷擊",
+      "脈衝電球",
+      "電能散射",
+      "時間加速",
+      "群體元素強化"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A053",
+    "name": "雪景球",
+    "mainSkill": "冰封雪景 / 雪中景",
+    "ultimateId": "冰封雪景",
+    "passiveId": "雪中景",
+    "learnableSkills": [
+      "冰裂彈",
+      "冰晶潛刺",
+      "閃電穿刺",
+      "快速充能",
+      "元素強化",
+      "冰霜衛星"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A054",
+    "name": "派對猴",
+    "mainSkill": "派對開場 / 大吵鬧",
+    "ultimateId": "派對開場",
+    "passiveId": "大吵鬧",
+    "learnableSkills": [
+      "火焰彈",
+      "旋風",
+      "時間加速",
+      "挑釁",
+      "快速充能",
+      "扭曲空間"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A055",
+    "name": "炎之精",
+    "mainSkill": "爆炎呱 / 蛙跳",
+    "ultimateId": "爆炎呱",
+    "passiveId": "蛙跳",
+    "learnableSkills": [
+      "火焰彈",
+      "爆炎彈",
+      "灼燒光環",
+      "火焰衝擊",
+      "自我充能",
+      "閃避"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A056",
+    "name": "破碎少女",
+    "mainSkill": "認知解體 / 害羞",
+    "ultimateId": "認知解體",
+    "passiveId": "害羞",
+    "learnableSkills": [
+      "超感彈",
+      "超感射線",
+      "力量祭禮",
+      "抗拒消亡",
+      "絲網牽引",
+      "快速充能"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A057",
+    "name": "小紙人",
+    "mainSkill": "紙人防護 / 平安京",
+    "ultimateId": "紙人防護",
+    "passiveId": "平安京",
+    "learnableSkills": [
+      "火焰彈",
+      "火焰衝擊",
+      "雷擊",
+      "脈衝電球",
+      "冰裂彈",
+      "冰晶潛刺"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A058",
+    "name": "冰之瓶",
+    "mainSkill": "急速製冰 / 製冰機",
+    "ultimateId": "急速製冰",
+    "passiveId": "製冰機",
+    "learnableSkills": [
+      "冰裂彈",
+      "自我療癒",
+      "抗拒消亡",
+      "冰晶潛刺",
+      "挑釁",
+      "冰霜漩渦"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A059",
+    "name": "球狀閃電",
+    "mainSkill": "蓄電召雷 / 抑制光環",
+    "ultimateId": "蓄電召雷",
+    "passiveId": "抑制光環",
+    "learnableSkills": [
+      "電能彈",
+      "雷擊",
+      "震盪躍遷",
+      "元素強化",
+      "脈衝電球",
+      "電能散射"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  }
+]
