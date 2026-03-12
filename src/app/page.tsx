@@ -71,7 +71,7 @@ export default function LandingPage() {
         </motion.div>
 
         <motion.div variants={item}>
-          <Link href="/deviations" className="inline-flex items-center gap-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-8 py-3 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors">
+          <Link href="/filter" className="inline-flex items-center gap-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-8 py-3 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors">
             立即開始 <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>

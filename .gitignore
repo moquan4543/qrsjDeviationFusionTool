@@ -43,6 +43,8 @@ yarn-error.log*
 next-env.d.ts
 
 # documents
-skills.csv
-skillsList.csv
-RequirementSpecification.md
+docs/skills.csv
+docs/skillsList.csv
+docs/RequirementSpecification.md
+docs/FusionPathFinderRequirement.md
+docs/FusionPathFinderDesignSpecification.md
