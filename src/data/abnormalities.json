@@ -25,7 +25,7 @@
     "learnableSkills": [
       "超感彈",
       "超感射線",
-      "威攝",
+      "威懾",
       "物理強化",
       "物理衝擊波",
       "幸運之燈"
@@ -998,6 +998,40 @@
       "元素強化",
       "脈衝電球",
       "電能散射"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A060",
+    "name": "黑醫",
+    "mainSkill": "致命手術 / 瘟疫",
+    "ultimateId": "致命手術",
+    "passiveId": "瘟疫",
+    "learnableSkills": [
+      "猛擊",
+      "繭化",
+      "治療連結",
+      "挑釁",
+      "力量祭禮",
+      "承傷連結"
+    ],
+    "traitSlots": 4,
+    "weight": 1
+  },
+  {
+    "id": "A061",
+    "name": "明日之狗",
+    "mainSkill": "",
+    "ultimateId": "",
+    "passiveId": "",
+    "learnableSkills": [
+      "猛擊",
+      "衝鋒",
+      "迴旋斬",
+      "橫掃",
+      "威懾",
+      "護盾"
     ],
     "traitSlots": 4,
     "weight": 1
