@@ -8,6 +8,8 @@ import { SkillSelector } from '@/components/SkillSelector';
 import { SlidersHorizontal, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+export const runtime = 'edge';
+
 export default function FilterPage() {
   const t = useTranslations('Filter');
   const [targetSkills, setTargetSkills] = useState<string[]>([]);
