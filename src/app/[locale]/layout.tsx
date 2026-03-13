@@ -9,8 +9,6 @@ import { routing, Link } from '../../i18n/routing';
 import { notFound } from 'next/navigation';
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-export const runtime = 'edge';
-
 const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}): Promise<Metadata> {

@@ -6,8 +6,6 @@ import { motion, Variants } from 'framer-motion';
 import { Package, Sword, Search, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-export const runtime = 'edge';
-
 export default function LandingPage() {
   const t = useTranslations('LandingPage');
 
