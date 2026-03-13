@@ -7,6 +7,8 @@ import { AbnormalityCard } from '@/components/AbnormalityCard';
 import { Search } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+export const runtime = 'edge';
+
 export default function Home() {
   const t = useTranslations('Deviations');
   const [searchTerm, setSearchTerm] = useState('');
