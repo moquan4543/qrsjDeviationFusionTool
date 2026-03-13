@@ -15,4 +15,6 @@ export interface Abnormality {
   learnableSkills: string[];
   traitSlots: number;
   weight: number;
+  wishingStatues: string[];
+  wayToGet: string[];
 }

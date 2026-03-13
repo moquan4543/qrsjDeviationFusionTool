@@ -14,7 +14,11 @@
       "連鎖閃電"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "新綠競技場商店"
+    ]
   },
   {
     "id": "A002",
@@ -31,7 +35,12 @@
       "幸運之燈"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "心願競技場商店"
+    ]
+
   },
   {
     "id": "A003",
@@ -48,7 +57,12 @@
       "外神之觸"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "冬靈競技場商店"
+    ]
+
   },
   {
     "id": "A004",
@@ -65,7 +79,12 @@
       "黑洞噴流"
     ],
     "traitSlots": 5,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "熱泉競技場商店"
+    ]
+
   },
   {
     "id": "A005",
@@ -82,7 +101,12 @@
       "上界庇護"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "心願競技場商店"
+    ]
+
   },
   {
     "id": "A006",
@@ -99,7 +123,12 @@
       "踏影奇襲"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "心願競技場商店"
+    ]
+
   },
   {
     "id": "A007",
@@ -116,7 +145,11 @@
       "命運硬幣"
     ],
     "traitSlots": 5,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet":[
+      "心願競技場商店"
+    ]
   },
   {
     "id": "A008",
@@ -133,7 +166,12 @@
       "淨火之蝶"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "冬靈競技場商店"
+    ]
+
   },
   {
     "id": "A009",
@@ -150,7 +188,12 @@
       "魔法火焰飛行"
     ],
     "traitSlots": 5,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "熱泉競技場商店"
+    ]
+
   },
   {
     "id": "A010",
@@ -167,7 +210,12 @@
       "黑貓的凝視"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "新綠競技場商店"
+    ]
+
   },
   {
     "id": "A011",
@@ -184,7 +232,12 @@
       "BBQ"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "熱泉競技場商店"
+    ]
+
   },
   {
     "id": "A012",
@@ -201,7 +254,12 @@
       "冰晶千刃"
     ],
     "traitSlots": 5,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "冬靈競技場商店"
+    ]
+
   },
   {
     "id": "A013",
@@ -218,7 +276,12 @@
       "貓貓拳"
     ],
     "traitSlots": 5,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "新綠競技場商店"
+    ]
+
   },
   {
     "id": "A014",
@@ -235,7 +298,12 @@
       "承傷連結"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "冬靈競技場商店"
+    ]
+
   },
   {
     "id": "A015",
@@ -252,7 +320,14 @@
       "腐蝕光環"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "里奇收容站",
+      "東黑原樞紐"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A016",
@@ -269,7 +344,15 @@
       "虛空領域"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "凍原巨楔",
+      "雪崩巨楔"
+    ],
+    "wayToGet":[
+      "熱泉競技場商店",
+      "分布於據點"
+    ]
   },
   {
     "id": "A017",
@@ -286,7 +369,14 @@
       "扭曲空間"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "種植洋蔥",
+      "常見於鐵鏽河區域",
+      "經常埋在地裡"
+    ]
+
   },
   {
     "id": "A018",
@@ -303,7 +393,13 @@
       "群體物理強化"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "常見於汙染區",
+      "理智過低時容易發現"
+    ]
+
   },
   {
     "id": "A019",
@@ -320,7 +416,14 @@
       "充能光環"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "黑原油田",
+      "太陽農場"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A020",
@@ -337,7 +440,14 @@
       "時間加速"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "常見於孤狼荒原",
+      "常見於黑心地帶",
+      "擊殺怪異狼群召喚"
+    ]
+
   },
   {
     "id": "A021",
@@ -354,7 +464,14 @@
       "超級爆炸"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "懸巢",
+      "白崖基地"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A022",
@@ -371,7 +488,13 @@
       "動物專家"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "熱泉競技場商店",
+      "大世界隨處可見"
+    ]
+
   },
   {
     "id": "A023",
@@ -388,7 +511,13 @@
       "萬箭齊發"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "冬靈競技場商店",
+      "常見於北方叢林"
+    ]
+
   },
   {
     "id": "A024",
@@ -405,7 +534,13 @@
       "巨鯨來襲"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "心願競技場商店",
+      "常見於河流邊"
+    ]
+
   },
   {
     "id": "A025",
@@ -422,7 +557,15 @@
       "閃現"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "心願奇境"
+    ],
+    "wayToGet": [
+      "心願競技場商店",
+      "分布於據點"
+    ]
+
   },
   {
     "id": "A026",
@@ -439,7 +582,14 @@
       "超感射線"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "大河收容場",
+      "菲斯庫爾港"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A027",
@@ -456,7 +606,12 @@
       "魚雷"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "常見於北方河流邊"
+    ]
+
   },
   {
     "id": "A028",
@@ -473,7 +628,14 @@
       "原油溢出"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "熱泉競技場商店",
+      "常見於孤狼荒原",
+      "常見於黑心地帶"
+    ]
+
   },
   {
     "id": "A029",
@@ -490,7 +652,12 @@
       "刀鋒宣告"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界隨處可見"
+    ]
+
   },
   {
     "id": "A030",
@@ -507,7 +674,12 @@
       "元素強化"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界隨處可見"
+    ]
+
   },
   {
     "id": "A031",
@@ -524,7 +696,13 @@
       "雨夜殺機"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界隨處可見",
+      "下雨天更容易遇到"
+    ]
+
   },
   {
     "id": "A032",
@@ -541,7 +719,14 @@
       "抗拒消亡"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "種植蘑菇",
+      "大世界隨處可見",
+      "經常埋在地裡"
+    ]
+
   },
   {
     "id": "A033",
@@ -558,7 +743,12 @@
       "河狸連打"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界隨處可見"
+    ]
+
   },
   {
     "id": "A034",
@@ -575,7 +765,14 @@
       "繭化"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "黑石要塞",
+      "母巢"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A035",
@@ -592,7 +789,14 @@
       "群體元素強化"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "交錯現實研究所",
+      "73原質分離點"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A036",
@@ -609,7 +813,14 @@
       "糖衣砲彈"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "幕斯市",
+      "幕斯食品廠"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A037",
@@ -626,7 +837,15 @@
       "緊急護盾"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "穢水工業區",
+      "波光鎮",
+      "冶煉廠汙染點"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A038",
@@ -643,7 +862,14 @@
       "療癒光環"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "阿卡爾克鎮",
+      "高地"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A039",
@@ -660,7 +886,12 @@
       "異能導管"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "分布於據點"
+    ]
+
   },
   {
     "id": "A040",
@@ -677,7 +908,15 @@
       "腐蝕光環"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "黑原鎮",
+      "綠蔭鎮"
+    ],
+    "wayToGet":[
+      "新綠競技場商店",
+      "分布於據點"
+    ]
   },
   {
     "id": "A041",
@@ -694,7 +933,13 @@
       "緊急護盾"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "常見於北方海邊",
+      "釣魚"
+    ]
+
   },
   {
     "id": "A042",
@@ -711,7 +956,11 @@
       "閃避"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界隨處可見"
+    ]
   },
   {
     "id": "A043",
@@ -728,7 +977,16 @@
       "治療連結"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "交錯現實研究所",
+      "懸巢",
+      "太陽農場",
+      "母巢"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A044",
@@ -745,7 +1003,12 @@
       "衝鋒"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界隨處可見"
+    ]
+
   },
   {
     "id": "A045",
@@ -762,7 +1025,18 @@
       "元素強化"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "穢水工業區",
+      "波光鎮",
+      "73原質分離點",
+      "太陽農場",
+      "菲斯庫爾港"
+    ],
+    "wayToGet":[
+      "分布於據點",
+      "釣魚"
+    ]
   },
   {
     "id": "A046",
@@ -779,7 +1053,16 @@
       "療癒光環"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "黑原油田",
+      "穢水工業區",
+      "里奇收容站",
+      "冶煉廠汙染點"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A047",
@@ -796,7 +1079,17 @@
       "快速充能"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "暗夢巨楔",
+      "里奇收容站",
+      "交錯現實研究所",
+      "東黑原樞紐",
+      "心願奇境"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A048",
@@ -813,7 +1106,14 @@
       "抗拒消亡"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "黑原鎮",
+      "綠蔭鎮"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A049",
@@ -830,7 +1130,12 @@
       "療癒光環"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界隨處可見"
+    ]
+
   },
   {
     "id": "A050",
@@ -847,7 +1152,16 @@
       "自我充能"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "綠蔭鎮",
+      "高地",
+      "幕斯市",
+      "幕斯食品廠"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A051",
@@ -864,7 +1178,13 @@
       "重壓"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界隨處可見",
+      "經常偽裝成礦石"
+    ]
+
   },
   {
     "id": "A052",
@@ -881,7 +1201,16 @@
       "群體元素強化"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "暗夢巨楔",
+      "遺忘巨楔",
+      "凍原巨楔",
+      "雪崩巨楔"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A053",
@@ -898,7 +1227,16 @@
       "冰霜衛星"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "黑石要塞",
+      "幕斯市",
+      "凍原巨楔",
+      "母巢"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A054",
@@ -915,7 +1253,16 @@
       "扭曲空間"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "黑原鎮",
+      "波光鎮",
+      "懸巢",
+      "心願奇境"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A055",
@@ -932,7 +1279,13 @@
       "閃避"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "常見於孤狼荒原",
+      "常見於黑心地帶"
+    ]
+
   },
   {
     "id": "A056",
@@ -949,7 +1302,17 @@
       "快速充能"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "東黑原樞紐",
+      "遺忘巨楔",
+      "73原質分離點",
+      "白崖基地",
+      "大河收容場"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A057",
@@ -966,7 +1329,16 @@
       "冰晶潛刺"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "黑原油田",
+      "阿卡爾克鎮",
+      "冶煉廠汙染點",
+      "黑石要塞"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A058",
@@ -983,7 +1355,16 @@
       "冰霜漩渦"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [
+      "幕斯食品廠",
+      "大河收容場",
+      "雪崩巨楔",
+      "菲斯庫爾港"
+    ],
+    "wayToGet":[
+      "分布於據點"
+    ]
   },
   {
     "id": "A059",
@@ -1000,7 +1381,13 @@
       "電能散射"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界隨處可見",
+      "雷雨天更容易遇到"
+    ]
+
   },
   {
     "id": "A060",
@@ -1017,7 +1404,12 @@
       "承傷連結"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "新綠競技場商店"
+    ]
+
   },
   {
     "id": "A061",
@@ -1034,6 +1426,11 @@
       "護盾"
     ],
     "traitSlots": 4,
-    "weight": 1
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "明日之後聯動活動"
+    ]
+
   }
 ]
