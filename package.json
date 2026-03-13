@@ -9,6 +9,10 @@
     "lint": "eslint",
     "pages:build": "next-on-pages"
   },
+  "engines": {
+    "node": ">=22.16.0",
+    "bun": ">=1.1.33"
+  },
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.35.2",
