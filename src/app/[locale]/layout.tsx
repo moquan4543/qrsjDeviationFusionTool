@@ -51,30 +51,32 @@ export default async function RootLayout({
                 <BookSearch className="w-5 h-5 md:w-6 md:h-6" />
                 <span className="hidden sm:inline">Fusion Planner</span>
               </Link>
-              <nav className="flex items-center gap-2 md:gap-6 overflow-x-auto no-scrollbar">
-                <Link href="/deviations" className="text-sm font-medium hover:text-indigo-600 transition-colors flex items-center gap-1.5 whitespace-nowrap px-1 md:px-0">
-                  <Package className="w-4 h-4" /> 
-                  <span className="hidden sm:inline">{tNav('deviations')}</span>
-                </Link>
-                <Link href="/skills" className="text-sm font-medium hover:text-indigo-600 transition-colors flex items-center gap-1.5 whitespace-nowrap px-1 md:px-0">
-                  <Sword className="w-4 h-4" /> 
-                  <span className="hidden sm:inline">{tNav('skills')}</span>
-                </Link>
-                <Link href="/filter" className="bg-indigo-600/10 text-indigo-600 dark:bg-indigo-600/20 dark:text-indigo-400 p-2 md:px-4 md:py-2 rounded-xl text-sm font-medium hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 transition-all flex items-center gap-1.5 shrink-0">
-                  <Search className="w-4 h-4" /> 
-                  <span className="hidden sm:inline">{tNav('filter')}</span>
-                </Link>
+              <div className="flex items-center gap-2 md:gap-6">
+                <nav className="flex items-center gap-2 md:gap-6 overflow-x-auto no-scrollbar">
+                  <Link href="/deviations" className="text-sm font-medium hover:text-indigo-600 transition-colors flex items-center gap-1.5 whitespace-nowrap px-1 md:px-0">
+                    <Package className="w-4 h-4" /> 
+                    <span className="hidden sm:inline">{tNav('deviations')}</span>
+                  </Link>
+                  <Link href="/skills" className="text-sm font-medium hover:text-indigo-600 transition-colors flex items-center gap-1.5 whitespace-nowrap px-1 md:px-0">
+                    <Sword className="w-4 h-4" /> 
+                    <span className="hidden sm:inline">{tNav('skills')}</span>
+                  </Link>
+                  <Link href="/filter" className="bg-indigo-600/10 text-indigo-600 dark:bg-indigo-600/20 dark:text-indigo-400 p-2 md:px-4 md:py-2 rounded-xl text-sm font-medium hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 transition-all flex items-center gap-1.5 shrink-0">
+                    <Search className="w-4 h-4" /> 
+                    <span className="hidden sm:inline">{tNav('filter')}</span>
+                  </Link>
+                </nav>
                 <div className="shrink-0">
                   <LanguageSwitcher />
                 </div>
-              </nav>
+              </div>
             </div>
           </header>
           <main className="container mx-auto px-4 py-8 flex-1">
             {children}
           </main>
           <footer className="border-t border-gray-200 dark:border-gray-800 py-8 mt-auto bg-white/50 dark:bg-gray-900/50 ">
-            <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="container lg:relative lg:justify-between mx-auto px-4 flex flex-col md:flex-row items-center gap-6">
               <div className="flex items-center gap-4 order-2 md:order-1">
                 <div className="flex items-center gap-2 text-sm text-gray-500">
                   <FileChartColumn size={14} />
@@ -83,12 +85,12 @@ export default async function RootLayout({
                       href="https://www.bilibili.com/video/BV1oqNFzREK3"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-indigo-600 underline underline-offset-4 decoration-gray-300"
+                      className="hover:text-indigo-600 underline underline-offset-4 decoration-gray-400"
                   >{tFooter('bilibiliLink')}</Link>
                 </div>
               </div>
               
-              <div className="text-sm text-gray-500 order-3 md:order-2">
+              <div className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 text-sm text-gray-500 order-3 md:order-2">
                 &copy; 2026 Once Human Deviation Fusion Tool.
               </div>
 
