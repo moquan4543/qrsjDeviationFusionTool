@@ -14,9 +14,11 @@ export default function LanguageSwitcher() {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const locales = [
-    { code: 'zh-TW', label: '繁體中文' },
-    { code: 'zh-CN', label: '简体中文' }
+    { code: 'zh-TW', label: '繁體中文', shortLabel: '繁中' },
+    { code: 'zh-CN', label: '简体中文', shortLabel: '简中' }
   ];
+
+  const currentLocaleData = locales.find(l => l.code === locale);
 
   const handleLocaleChange = (newLocale: string) => {
     router.replace(pathname, { locale: newLocale });
@@ -40,8 +42,8 @@ export default function LanguageSwitcher() {
         className="flex items-center gap-1.5 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-medium"
         title={t('language')}
       >
-        <Globe className="w-4 h-4" />
-        <span className="uppercase">{locale.split('-')[1] || locale}</span>
+        <Globe className="w-4 h-4 text-indigo-500" />
+        <span className="font-bold">{currentLocaleData?.shortLabel || locale}</span>
       </button>
 
       {isOpen && (
