@@ -6,8 +6,10 @@ import { getAbnormalities, getSkills, filterAbnormalities } from '@/lib/data';
 import { AbnormalityCard } from '@/components/AbnormalityCard';
 import { SkillSelector } from '@/components/SkillSelector';
 import { SlidersHorizontal, Trash2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function FilterPage() {
+  const t = useTranslations('Filter');
   const [targetSkills, setTargetSkills] = useState<string[]>([]);
   const [excludeSkills, setExcludeSkills] = useState<string[]>([]);
   
@@ -31,37 +33,37 @@ export default function FilterPage() {
       <div>
         <h1 className="text-3xl font-bold flex items-center gap-2">
           <SlidersHorizontal className="w-8 h-8 text-indigo-500" />
-          技能提純搜尋
+          {t('title')}
         </h1>
-        <p className="text-gray-500 mt-1">找到包含特定技能且排除不想要技能的異常物</p>
+        <p className="text-gray-500 mt-1">{t('description')}</p>
       </div>
 
       <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-              目標技能 (Target Skills)
+              {t('targetLabel')}
             </label>
             <SkillSelector 
               skills={allSkills} 
               selectedIds={targetSkills} 
               onChange={setTargetSkills}
-              placeholder="搜尋需要的技能..."
+              placeholder={t('targetPlaceholder')}
             />
-            <p className="text-xs text-gray-400">系統將篩選出「包含所有」目標技能的異常物</p>
+            <p className="text-xs text-gray-400">{t('targetHint')}</p>
           </div>
 
           <div className="space-y-2">
             <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-              排除技能 (Exclude Skills)
+              {t('excludeLabel')}
             </label>
             <SkillSelector 
               skills={allSkills} 
               selectedIds={excludeSkills} 
               onChange={setExcludeSkills}
-              placeholder="搜尋要排除的技能..."
+              placeholder={t('excludePlaceholder')}
             />
-            <p className="text-xs text-gray-400">系統將移除「包含任何」排除技能的異常物</p>
+            <p className="text-xs text-gray-400">{t('excludeHint')}</p>
           </div>
         </div>
 
@@ -71,7 +73,7 @@ export default function FilterPage() {
               onClick={clearFilters}
               className="text-sm flex items-center gap-1.5 text-red-500 hover:text-red-600 transition-colors font-medium"
             >
-              <Trash2 className="w-4 h-4" /> 重置篩選
+              <Trash2 className="w-4 h-4" /> {t('reset')}
             </button>
           </div>
         )}
@@ -80,7 +82,7 @@ export default function FilterPage() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">
-            搜尋結果 ({filtered.length})
+            {t('resultCount', { count: filtered.length })}
           </h2>
         </div>
 
@@ -91,7 +93,7 @@ export default function FilterPage() {
             ))
           ) : (
             <div className="col-span-full py-20 text-center text-gray-500 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-dashed border-gray-200 dark:border-gray-700">
-              沒有符合條件的異常物，請調整篩選條件。
+              {t('notFound')}
             </div>
           )}
         </div>

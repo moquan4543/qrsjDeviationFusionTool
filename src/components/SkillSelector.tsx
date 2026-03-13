@@ -5,6 +5,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Skill } from '@/types';
 import { X, Search, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 interface SkillSelectorProps {
   skills: Skill[];
@@ -17,8 +18,10 @@ export const SkillSelector: React.FC<SkillSelectorProps> = ({
   skills, 
   selectedIds, 
   onChange, 
-  placeholder = "選擇技能..." 
+  placeholder 
 }) => {
+  const t = useTranslations('Components.SkillSelector');
+  const tData = useTranslations('Data');
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,6 +54,8 @@ export const SkillSelector: React.FC<SkillSelectorProps> = ({
     onChange(selectedIds.filter(id => id !== skillName));
   };
 
+  const displayPlaceholder = placeholder || t('placeholder');
+
   return (
     <div className="relative w-full" ref={containerRef}>
       <div 
@@ -58,14 +63,14 @@ export const SkillSelector: React.FC<SkillSelectorProps> = ({
         onClick={() => setIsOpen(!isOpen)}
       >
         {selectedIds.length === 0 && (
-          <span className="text-gray-400 px-2">{placeholder}</span>
+          <span className="text-gray-400 px-2">{displayPlaceholder}</span>
         )}
         {selectedIds.map(id => (
           <span 
             key={id} 
             className="flex items-center gap-1 px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-md text-sm"
           >
-            {id}
+            {tData(`Skills.${id}.name`)}
             <X 
               className="w-3.5 h-3.5 hover:text-indigo-900 dark:hover:text-indigo-100 transition-colors" 
               onClick={(e) => {
@@ -87,7 +92,7 @@ export const SkillSelector: React.FC<SkillSelectorProps> = ({
             <input
               autoFocus
               className="w-full bg-transparent outline-none text-sm p-1"
-              placeholder="搜尋技能名稱..."
+              placeholder={t('searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onClick={(e) => e.stopPropagation()}
@@ -104,12 +109,12 @@ export const SkillSelector: React.FC<SkillSelectorProps> = ({
                     toggleSelect(skill.name);
                   }}
                 >
-                  <div className="font-medium">{skill.name}</div>
-                  <div className="text-xs text-gray-400 truncate">{skill.description}</div>
+                  <div className="font-medium">{tData(`Skills.${skill.id || skill.name}.name`)}</div>
+                  <div className="text-xs text-gray-400 truncate">{tData(`Skills.${skill.id || skill.name}.description`)}</div>
                 </div>
               ))
             ) : (
-              <div className="px-3 py-4 text-center text-sm text-gray-400">找不到相符的技能</div>
+              <div className="px-3 py-4 text-center text-sm text-gray-400">{t('notFound')}</div>
             )}
           </div>
         </div>

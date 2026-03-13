@@ -5,6 +5,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skill } from '@/types';
 import { Clock } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface SkillTooltipProps {
   skill: Skill | undefined;
@@ -12,6 +13,8 @@ interface SkillTooltipProps {
 }
 
 export const SkillTooltip: React.FC<SkillTooltipProps> = ({ skill, children }) => {
+  const tData = useTranslations('Data');
+  const tSkills = useTranslations('Skills');
   const [isVisible, setIsVisible] = React.useState(false);
   const [offset, setOffset] = useState(0);
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -36,6 +39,8 @@ export const SkillTooltip: React.FC<SkillTooltipProps> = ({ skill, children }) =
 
   if (!skill) return <>{children}</>;
 
+  const skillNameKey = skill.id || skill.name;
+
   return (
     <div 
       className="relative inline-block"
@@ -57,7 +62,9 @@ export const SkillTooltip: React.FC<SkillTooltipProps> = ({ skill, children }) =
             }}
           >
             <div className="flex justify-between items-start mb-2 gap-4">
-              <div className="font-bold text-yellow-400 text-base">{skill.name}</div>
+              <div className="font-bold text-yellow-400 text-base">
+                {tData(`Skills.${skillNameKey}.name`)}
+              </div>
               {skill.cooldown && (
                 <div className="flex items-center gap-1 text-xs text-blue-400 whitespace-nowrap bg-blue-400/10 px-1.5 py-0.5 rounded border border-blue-400/20">
                   <Clock className="w-3 h-3" />
@@ -65,7 +72,9 @@ export const SkillTooltip: React.FC<SkillTooltipProps> = ({ skill, children }) =
                 </div>
               )}
             </div>
-            <div className="text-sm text-gray-200 leading-relaxed whitespace-pre-wrap">{skill.description || '暫無描述'}</div>
+            <div className="text-sm text-gray-200 leading-relaxed whitespace-pre-wrap">
+              {tData(`Skills.${skillNameKey}.description`) || tSkills('noDescription')}
+            </div>
             {/* The arrow should stay centered to the tag, not the adjusted tooltip */}
             <div 
               className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45 border-r border-b border-gray-700 -mt-1"

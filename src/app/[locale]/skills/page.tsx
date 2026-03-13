@@ -5,8 +5,11 @@ import React, { useState } from 'react';
 import { getSkills } from '@/lib/data';
 import { Search, Info, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 export default function SkillsPage() {
+  const t = useTranslations('Skills');
+  const tData = useTranslations('Data');
   const [searchTerm, setSearchTerm] = useState('');
   const skills = getSkills();
 
@@ -19,15 +22,15 @@ export default function SkillsPage() {
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold">技能列表</h1>
-          <p className="text-gray-500 mt-1">瀏覽系統中所有的技能及其詳細效果</p>
+          <h1 className="text-3xl font-bold">{t('title')}</h1>
+          <p className="text-gray-500 mt-1">{t('description')}</p>
         </div>
         
         <div className="relative w-full md:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input 
             type="text" 
-            placeholder="搜尋技能名稱或描述..." 
+            placeholder={t('searchPlaceholder')} 
             className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -48,7 +51,7 @@ export default function SkillsPage() {
                 )}>
                   <Info className="w-4 h-4" />
                 </div>
-                <h3 className="font-bold">{skill.name}</h3>
+                <h3 className="font-bold">{tData(`Skills.${skill.id || skill.name}.name`)}</h3>
               </div>
               
               {skill.cooldown && (
@@ -59,7 +62,7 @@ export default function SkillsPage() {
               )}
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-400 flex-1 leading-relaxed">
-              {skill.description || '暫無描述'}
+              {tData(`Skills.${skill.id || skill.name}.description`) || t('noDescription')}
             </p>
           </div>
         ))}
