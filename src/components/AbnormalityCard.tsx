@@ -42,9 +42,13 @@ export const AbnormalityCard: React.FC<AbnormalityCardProps> = ({ abnormality })
                 <motion.span
                   onMouseEnter={() => setShowStatues(true)}
                   onMouseLeave={() => setShowStatues(false)}
+                  onClick={() => setShowStatues(!showStatues)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   initial={{ opacity: 0, x: -5 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="mr-1 text-sm font-bold px-2 py-0.5 bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 rounded border border-amber-200 dark:border-amber-800 cursor-help"
+                  className="mr-1 text-sm font-bold px-2 py-0.5 bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 rounded border border-amber-200 dark:border-amber-800 cursor-help select-none inline-block"
                 >
                   {t('wishingStatue')}
                 </motion.span>

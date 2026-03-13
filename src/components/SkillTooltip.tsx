@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Skill } from '@/types';
 import { Clock } from 'lucide-react';
@@ -15,23 +15,37 @@ interface SkillTooltipProps {
 export const SkillTooltip: React.FC<SkillTooltipProps> = ({ skill, children }) => {
   const tData = useTranslations('Data');
   const tSkills = useTranslations('Skills');
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [offset, setOffset] = useState(0);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  // We use useLayoutEffect to measure the tooltip size before it's displayed to the user
+  // This avoids the "flicker" where the tooltip starts in the wrong position.
+  const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
+  useIsomorphicLayoutEffect(() => {
     if (isVisible && tooltipRef.current) {
-      const rect = tooltipRef.current.getBoundingClientRect();
-      const padding = 16;
-      let newOffset = 0;
-      
-      if (rect.left < padding) {
-        newOffset = padding - rect.left;
-      } else if (rect.right > window.innerWidth - padding) {
-        newOffset = (window.innerWidth - padding) - rect.right;
-      }
-      
-      setOffset(newOffset);
+      const updatePosition = () => {
+        if (!tooltipRef.current) return;
+        const rect = tooltipRef.current.getBoundingClientRect();
+        const padding = 16;
+        let newOffset = 0;
+        
+        if (rect.left < padding) {
+          newOffset = padding - rect.left;
+        } else if (rect.right > window.innerWidth - padding) {
+          newOffset = (window.innerWidth - padding) - rect.right;
+        }
+        
+        if (newOffset !== 0) {
+          setOffset(newOffset);
+        }
+      };
+
+      // Use requestAnimationFrame to defer the state update until after the initial render of the tooltip
+      // This satisfies ESLint's requirement for non-synchronous updates in effects.
+      const frameId = requestAnimationFrame(updatePosition);
+      return () => cancelAnimationFrame(frameId);
     } else {
       setOffset(0);
     }
@@ -42,10 +56,14 @@ export const SkillTooltip: React.FC<SkillTooltipProps> = ({ skill, children }) =
   const skillNameKey = skill.id || skill.name;
 
   return (
-    <div 
-      className="relative inline-block"
+    <motion.div 
+      className="relative inline-block select-none cursor-help"
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
+      onClick={() => setIsVisible(!isVisible)}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
       {children}
       <AnimatePresence>
@@ -75,14 +93,9 @@ export const SkillTooltip: React.FC<SkillTooltipProps> = ({ skill, children }) =
             <div className="text-sm text-gray-200 leading-relaxed whitespace-pre-wrap">
               {tData(`Skills.${skillNameKey}.description`) || tSkills('noDescription')}
             </div>
-            {/* The arrow should stay centered to the tag, not the adjusted tooltip */}
-            <div 
-              className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45 border-r border-b border-gray-700 -mt-1"
-              style={{ transform: `translateX(calc(-50% - ${offset}px)) rotate(45deg)` }}
-            />
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };

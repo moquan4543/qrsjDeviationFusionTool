@@ -59,7 +59,7 @@ export const SkillSelector: React.FC<SkillSelectorProps> = ({
   return (
     <div className="relative w-full" ref={containerRef}>
       <div 
-        className="min-h-[42px] p-1.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 flex flex-wrap gap-1.5 cursor-pointer items-center shadow-sm"
+        className="min-h-[42px] p-1.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 flex flex-wrap gap-1.5 cursor-pointer items-center shadow-sm select-none"
         onClick={() => setIsOpen(!isOpen)}
       >
         {selectedIds.length === 0 && (
@@ -68,7 +68,7 @@ export const SkillSelector: React.FC<SkillSelectorProps> = ({
         {selectedIds.map(id => (
           <span 
             key={id} 
-            className="flex items-center gap-1 px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-md text-sm"
+            className="flex items-center gap-1 px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-md text-sm select-none"
           >
             {tData(`Skills.${id}.name`)}
             <X 
