@@ -96,7 +96,7 @@ export default async function RootLayout({
 
               <div className="flex items-center gap-6 order-1 md:order-3">
                 <Link 
-                  href="https://discord.gg/UMeUNQssfE"
+                  href="https://discord.gg/RzUhkzBbr7"
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 p-2.5 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-full font-bold transition-all shadow-md hover:shadow-lg active:scale-95"
