@@ -1413,6 +1413,28 @@
   },
   {
     "id": "A061",
+    "name": "勇士喬治",
+    "mainSkill": "勇者爆發 / 王冠之力",
+    "ultimateId": "勇者爆發",
+    "passiveId": "王冠之力",
+    "learnableSkills": [
+      "猛擊",
+      "繭化",
+      "重壓",
+      "抗拒消亡",
+      "挑釁",
+      "蓄能反射"
+    ],
+    "traitSlots": 4,
+    "weight": 1,
+    "wishingStatues": [],
+    "wayToGet": [
+      "大世界探索",
+      "母巢有分布"
+    ]
+  },
+  {
+    "id": "A062",
     "name": "明日之狗",
     "mainSkill": "",
     "ultimateId": "",
