@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Abnormality, Trait, UserInventoryDeviant, GoalConfiguration, MissingRequirement, SolverResult } from '@/types';
+import { Abnormality, Trait, UserInventoryDeviant, GoalConfiguration, MissingRequirement, SolverResult, TraitCategory } from '@/types';
 import { getAbnormalities, getTraits } from '@/lib/data';
 
 export interface FusionStep {
