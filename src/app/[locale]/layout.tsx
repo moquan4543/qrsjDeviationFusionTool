@@ -61,9 +61,13 @@ export default async function RootLayout({
                     <Sword className="w-4 h-4" /> 
                     <span className="hidden sm:inline">{tNav('skills')}</span>
                   </Link>
-                  <Link href="/filter" className="bg-indigo-600/10 text-indigo-600 dark:bg-indigo-600/20 dark:text-indigo-400 p-2 md:px-4 md:py-2 rounded-xl text-sm font-medium hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 transition-all flex items-center gap-1.5 shrink-0">
+                  <Link href="/filter" className="text-sm font-medium hover:text-indigo-600 transition-colors flex items-center gap-1.5 whitespace-nowrap px-1 md:px-0">
                     <Search className="w-4 h-4" /> 
                     <span className="hidden sm:inline">{tNav('filter')}</span>
+                  </Link>
+                  <Link href="/fusion-path" className="bg-indigo-600/10 text-indigo-600 dark:bg-indigo-600/20 dark:text-indigo-400 p-2 md:px-4 md:py-2 rounded-xl text-sm font-medium hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 transition-all flex items-center gap-1.5 shrink-0">
+                    <Sword className="w-4 h-4" /> 
+                    <span className="hidden sm:inline">{tNav('fusionPath')}</span>
                   </Link>
                 </nav>
                 <div className="shrink-0">

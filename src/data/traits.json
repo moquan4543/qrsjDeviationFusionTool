@@ -1,0 +1,2394 @@
+[
+  {
+    "id": "T001",
+    "name": "巡遊魔女",
+    "category": "通用",
+    "description": "異常能量上限增加10%",
+    "boundSpecies": "破碎少女",
+    "isFusable": true
+  },
+  {
+    "id": "T002",
+    "name": "凝視的黑貓 - 逆軌星臨",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，近戰傷害+5%，在空中時效果提升50%",
+    "boundSpecies": "凝視的黑貓",
+    "isFusable": true
+  },
+  {
+    "id": "T003",
+    "name": "凝視的黑貓 - 法老",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "凝視的黑貓",
+    "isFusable": true
+  },
+  {
+    "id": "T004",
+    "name": "活性凝膠 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "活性凝膠",
+    "isFusable": true
+  },
+  {
+    "id": "T005",
+    "name": "活性凝膠 - 奶糖",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度的上限增加35",
+    "boundSpecies": "活性凝膠",
+    "isFusable": true
+  },
+  {
+    "id": "T006",
+    "name": "讚美太陽 - 春薔薇",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，玩家在白天獲得20%的治療效果提升，在夜晚效果减半",
+    "boundSpecies": "活性凝膠",
+    "isFusable": true
+  },
+  {
+    "id": "T007",
+    "name": "星空 - 海藍星",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，每次換彈隨機獲得5%槍械傷害提升或5%異常傷害提升",
+    "boundSpecies": "活性凝膠",
+    "isFusable": true
+  },
+  {
+    "id": "T008",
+    "name": "活性凝膠 - 月之預兆",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，每8秒恢復1點異常能量，理智值低於30%時翻1.5倍",
+    "boundSpecies": "活性凝膠",
+    "isFusable": false
+  },
+  {
+    "id": "T009",
+    "name": "低語孤狼 - 月之預兆",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，玩家槍械傷害+5%，理智值低於30%時翻1.5倍",
+    "boundSpecies": "低語孤狼",
+    "isFusable": false
+  },
+  {
+    "id": "T010",
+    "name": "輝光異種 - 低語孤狼",
+    "category": "通用",
+    "description": "活躍度上限增加7%",
+    "boundSpecies": "低語孤狼",
+    "isFusable": true
+  },
+  {
+    "id": "T011",
+    "name": "低語孤狼 - 遠星遺淚",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "低語孤狼",
+    "isFusable": true
+  },
+  {
+    "id": "T012",
+    "name": "低語孤狼 - 爆裂熔火",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "低語孤狼",
+    "isFusable": true
+  },
+  {
+    "id": "T013",
+    "name": "惡臭球根 - 紫衣",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "惡臭球根",
+    "isFusable": true
+  },
+  {
+    "id": "T014",
+    "name": "遠歸之蝶 - 故紙",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "遠歸之蝶",
+    "isFusable": true
+  },
+  {
+    "id": "T015",
+    "name": "讚美月亮 - 星月夜",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，玩家在夜晚獲得6%的(槍械、異常)傷害提升，在白天效果減半",
+    "boundSpecies": "遠歸之蝶",
+    "isFusable": true
+  },
+  {
+    "id": "T016",
+    "name": "弱點大師 - 浮光藍",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，命中弱點額外增加1點異常能量，冷卻3秒",
+    "boundSpecies": "遠歸之蝶",
+    "isFusable": true
+  },
+  {
+    "id": "T017",
+    "name": "冬靈 - 返春",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度的上限增加35",
+    "boundSpecies": "冬靈",
+    "isFusable": true
+  },
+  {
+    "id": "T018",
+    "name": "冬靈 - 月之預兆",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，玩家異常傷害+5%，理智值低於30%時翻1.5倍",
+    "boundSpecies": "冬靈",
+    "isFusable": false
+  },
+  {
+    "id": "T019",
+    "name": "紅龍 - 月之預兆",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，玩家異常傷害+5%，理智值低於30%時翻1.5倍",
+    "boundSpecies": "紅龍",
+    "isFusable": false
+  },
+  {
+    "id": "T020",
+    "name": "皆斬 - 月之預兆",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，玩家和皆斬的近戰傷害+10%，理智值低於30%時翻1.5倍",
+    "boundSpecies": "皆斬",
+    "isFusable": false
+  },
+  {
+    "id": "T021",
+    "name": "願望先生 - 願望青龍",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量恢復速度增加15%",
+    "boundSpecies": "願望先生",
+    "isFusable": true
+  },
+  {
+    "id": "T022",
+    "name": "空之子 - 極寒之觸",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量恢復速度增加15%",
+    "boundSpecies": "空之子",
+    "isFusable": true
+  },
+  {
+    "id": "T023",
+    "name": "空之子 - 月之預兆",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，滑翔下降速度減少20%，水平速度提升10%，理智值低於30%時翻1.5倍",
+    "boundSpecies": "空之子",
+    "isFusable": false
+  },
+  {
+    "id": "T024",
+    "name": "空之子 - 爆裂熔火",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "空之子",
+    "isFusable": true
+  },
+  {
+    "id": "T025",
+    "name": "快照 - 愚者之憶",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "快照",
+    "isFusable": true
+  },
+  {
+    "id": "T026",
+    "name": "快照 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "快照",
+    "isFusable": true
+  },
+  {
+    "id": "T027",
+    "name": "快照 - 月之預兆",
+    "category": "通用",
+    "description": "異常物的外觀發生了改變。能力同步後，玩家槍械傷害+5%，理智值低於30%時效果提升50%",
+    "boundSpecies": "快照",
+    "isFusable": false
+  },
+  {
+    "id": "T028",
+    "name": "迷你奇點 - 爆裂熔火",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度的上限增加35",
+    "boundSpecies": "迷你奇點",
+    "isFusable": true
+  },
+  {
+    "id": "T029",
+    "name": "迷你奇點 - 逆軌星臨",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，玩家頭部及軀幹傷害減免+5%，在空中時效果提升50%",
+    "boundSpecies": "迷你奇點",
+    "isFusable": false
+  },
+  {
+    "id": "T030",
+    "name": "巫毒娃娃 - 逆軌星臨",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，每8秒恢復1點異常能量，在空中時效果提升50%",
+    "boundSpecies": "巫毒娃娃",
+    "isFusable": false
+  },
+  {
+    "id": "T031",
+    "name": "巫毒娃娃 - 絨毛咒物",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "巫毒娃娃",
+    "isFusable": true
+  },
+  {
+    "id": "T032",
+    "name": "迷你黃衣 - 食星異魔",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "迷你黃衣",
+    "isFusable": true
+  },
+  {
+    "id": "T033",
+    "name": "迷你黃衣 - 逆軌星臨",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，異常傷害+5%，在空中時效果提升50%",
+    "boundSpecies": "迷你黃衣",
+    "isFusable": false
+  },
+  {
+    "id": "T034",
+    "name": "極寒水母 - 逆軌星臨",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，霜寒元素傷害+5%，在空中時效果提升50%",
+    "boundSpecies": "極寒水母",
+    "isFusable": false
+  },
+  {
+    "id": "T035",
+    "name": "極寒水母 - 輝光異種",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加20%",
+    "boundSpecies": "極寒水母",
+    "isFusable": true
+  },
+  {
+    "id": "T036",
+    "name": "永恆烈陽 - 邪陽",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加20%",
+    "boundSpecies": "永恆烈陽",
+    "isFusable": true
+  },
+  {
+    "id": "T037",
+    "name": "永恆烈陽 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "永恆烈陽",
+    "isFusable": true
+  },
+  {
+    "id": "T038",
+    "name": "永恆烈陽 - 逆軌星臨",
+    "category": "戰鬥",
+    "description": "異常物外觀發生了改變。能力同步後，熾能元素傷害+5%，在空中時效果提升50%",
+    "boundSpecies": "永恆烈陽",
+    "isFusable": false
+  },
+  {
+    "id": "T039",
+    "name": "熊醫生 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加20%",
+    "boundSpecies": "熊醫生",
+    "isFusable": true
+  },
+  {
+    "id": "T040",
+    "name": "聖誕精靈",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，異常能量上限增加10%，異常能量恢復速度增加5%",
+    "boundSpecies": "熊醫生",
+    "isFusable": true
+  },
+  {
+    "id": "T041",
+    "name": "熊醫生 - 異變共棲",
+    "category": "通用",
+    "description": "異常物外觀發生了改變。玩家受到的傷害減少15%，在汙染區時，效果提升50%",
+    "boundSpecies": "熊醫生",
+    "isFusable": false
+  },
+  {
+    "id": "T042",
+    "name": "跑快快",
+    "category": "戰鬥",
+    "description": "與該異常物同步後玩家移動速度+5%",
+    "isFusable": true
+  },
+  {
+    "id": "T043",
+    "name": "兩班倒",
+    "category": "戰鬥",
+    "description": "與該異常物同步後，白天時玩家負重上限+16，夜晚時玩家移動速度+12%",
+    "isFusable": true
+  },
+  {
+    "id": "T044",
+    "name": "馱獸",
+    "category": "戰鬥",
+    "description": "與該異常物同步後玩家負重上限+8",
+    "isFusable": true
+  },
+  {
+    "id": "T045",
+    "name": "大力士",
+    "category": "戰鬥",
+    "description": "與該異常物同步後玩家負重上限+15，移動速度-5%",
+    "isFusable": true
+  },
+  {
+    "id": "T046",
+    "name": "力王",
+    "category": "戰鬥",
+    "description": "與該異常物同步後玩家負重上限+25，移動速度-10%",
+    "isFusable": true
+  },
+  {
+    "id": "T047",
+    "name": "缺乏鍛鍊",
+    "category": "戰鬥",
+    "description": "與該異常物同步後，若玩家在聚落區域內，玩家負重上限-8",
+    "isFusable": true
+  },
+  {
+    "id": "T048",
+    "name": "城裡人",
+    "category": "戰鬥",
+    "description": "與該異常物同步後，若玩家在聚落區域內，玩家負重上限+15",
+    "isFusable": true
+  },
+  {
+    "id": "T049",
+    "name": "街溜子",
+    "category": "戰鬥",
+    "description": "與該異常物同步後，若玩家在聚落區域內，玩家移動速度+10%",
+    "isFusable": true
+  },
+  {
+    "id": "T050",
+    "name": "足不出戶",
+    "category": "戰鬥",
+    "description": "與此異常物同步後，若玩家在聚落區域内，玩家耐力消耗+8%",
+    "isFusable": true
+  },
+  {
+    "id": "T051",
+    "name": "耐久",
+    "category": "戰鬥",
+    "description": "與該異常物同步後玩家耐力消耗-5%",
+    "isFusable": true
+  },
+  {
+    "id": "T052",
+    "name": "保存體力",
+    "category": "戰鬥",
+    "description": "與此異常物同步後玩家耐力消耗-10%，移動速度-5%",
+    "isFusable": true
+  },
+  {
+    "id": "T053",
+    "name": "長跑家",
+    "category": "戰鬥",
+    "description": "與此異常物同步後玩家耐力消耗-20%，移動速度-10%",
+    "isFusable": true
+  },
+  {
+    "id": "T054",
+    "name": "健康",
+    "category": "戰鬥",
+    "description": "與該異常物同步後玩家耐力上限+10",
+    "isFusable": true
+  },
+  {
+    "id": "T055",
+    "name": "植物般平靜",
+    "category": "戰鬥",
+    "description": "與此異常物同步後玩家耐力上限+15，移動速度-5%",
+    "isFusable": true
+  },
+  {
+    "id": "T056",
+    "name": "思想減負",
+    "category": "戰鬥",
+    "description": "與該異常物同步後，玩家負重越小，頭部受傷減免越高，最高+15%",
+    "isFusable": true
+  },
+  {
+    "id": "T057",
+    "name": "又重又硬",
+    "category": "戰鬥",
+    "description": "與該異常物同步後，玩家負重越高，軀幹受傷減免越高，最高+15%",
+    "isFusable": true
+  },
+  {
+    "id": "T058",
+    "name": "神槍手",
+    "category": "戰鬥",
+    "description": "該異常物在場戰鬥時，玩家槍械傷害+5%",
+    "isFusable": true
+  },
+  {
+    "id": "T059",
+    "name": "念力小子",
+    "category": "戰鬥",
+    "description": "該異常物在場戰鬥時，玩家異常傷害+5%",
+    "isFusable": true
+  },
+  {
+    "id": "T060",
+    "name": "生命在於運動",
+    "category": "戰鬥",
+    "description": "與該異常物同步後，若玩家處於疾跑狀態，則每8秒恢復1點異常能量",
+    "isFusable": true
+  },
+  {
+    "id": "T061",
+    "name": "量子蝸牛 - 月之預兆",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，產出資源的時間間隔降低15%",
+    "boundSpecies": "量子蝸牛",
+    "isFusable": false
+  },
+  {
+    "id": "T062",
+    "name": "量子蝸牛 - 金色閃電",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量恢復速度增加15%",
+    "boundSpecies": "量子蝸牛",
+    "isFusable": true
+  },
+  {
+    "id": "T063",
+    "name": "一碗美味 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量恢復速度增加15%",
+    "boundSpecies": "一碗美味",
+    "isFusable": true
+  },
+  {
+    "id": "T064",
+    "name": "派對猴 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "派對猴",
+    "isFusable": true
+  },
+  {
+    "id": "T065",
+    "name": "迪斯可球 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "迪斯可球",
+    "isFusable": true
+  },
+  {
+    "id": "T066",
+    "name": "上界之卵 - 異變共棲",
+    "category": "通用",
+    "description": "異常物外觀發生了改變。在汙染區內，產出資源時，有30%機率增加1",
+    "boundSpecies": "上界之卵",
+    "isFusable": false
+  },
+  {
+    "id": "T067",
+    "name": "雪景球 - 異變共棲",
+    "category": "通用",
+    "description": "異常物外觀發生了改變。在汙染區內，產出資源時，有30%機率增加1",
+    "boundSpecies": "雪景球",
+    "isFusable": false
+  },
+  {
+    "id": "T068",
+    "name": "雪景球 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "雪景球",
+    "isFusable": true
+  },
+  {
+    "id": "T069",
+    "name": "空間魔方 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "空間魔方",
+    "isFusable": true
+  },
+  {
+    "id": "T070",
+    "name": "空間魔方 - 白崖殘岩",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度的上限增加35",
+    "boundSpecies": "空間魔方",
+    "isFusable": true
+  },
+  {
+    "id": "T071",
+    "name": "氣球狗 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "氣球狗",
+    "isFusable": true
+  },
+  {
+    "id": "T072",
+    "name": "氣球狗 - 金色閃電",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "氣球狗",
+    "isFusable": true
+  },
+  {
+    "id": "T073",
+    "name": "薑餅屋 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "薑餅屋",
+    "isFusable": true
+  },
+  {
+    "id": "T074",
+    "name": "核子打火機 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加20%",
+    "boundSpecies": "核子打火機",
+    "isFusable": true
+  },
+  {
+    "id": "T075",
+    "name": "懶惰",
+    "category": "造物",
+    "description": "造物型產出資源的時間間隔增加10%",
+    "isFusable": true
+  },
+  {
+    "id": "T076",
+    "name": "產能第一",
+    "category": "造物",
+    "description": "造物型產出資源的時間間隔降低5%",
+    "isFusable": true
+  },
+  {
+    "id": "T077",
+    "name": "加速， 加速",
+    "category": "造物",
+    "description": "造物型產出資源時間間隔減少10%",
+    "isFusable": true
+  },
+  {
+    "id": "T078",
+    "name": "死線前一夜",
+    "category": "造物",
+    "description": "造物型產出資源的時間間隔降低15%",
+    "isFusable": true
+  },
+  {
+    "id": "T079",
+    "name": "效率至上",
+    "category": "造物",
+    "description": "造物型產出資源的時間間隔降低20%。可容納資源的上限減少30%",
+    "isFusable": true
+  },
+  {
+    "id": "T080",
+    "name": "副產品",
+    "category": "造物",
+    "description": "異常物活躍度大於90%，在產出資源時有10%的機率使其他造物型異常物增加2點異常能量",
+    "isFusable": true
+  },
+  {
+    "id": "T081",
+    "name": "肥水不流外人田",
+    "category": "造物",
+    "description": "異常物活躍度大於90%，在產出資源時有5%的機率給其他造物型異常物增加10點異常能量",
+    "isFusable": true
+  },
+  {
+    "id": "T082",
+    "name": "順手牽羊",
+    "category": "造物",
+    "description": "異常物活躍度小於20%，在產出資源時會減少其他造物型異常物5點異常能量",
+    "isFusable": true
+  },
+  {
+    "id": "T083",
+    "name": "瘋狂生產",
+    "category": "造物",
+    "description": "異常物活躍度小於20%，在產出資源時消耗其他造物型異常物1點異常能量。但資源會多產出2個",
+    "isFusable": true
+  },
+  {
+    "id": "T084",
+    "name": "邊角料",
+    "category": "造物",
+    "description": "異常物活躍度大於20%，在產出資源時有10%的機率給其他造物型異常物增加1點異常能量。可容納資源的上限減少20%",
+    "isFusable": true
+  },
+  {
+    "id": "T085",
+    "name": "計畫外生產",
+    "category": "造物",
+    "description": "造物型在產出資源時，有10%的機率不扣除異常能量。產出資源的時間間隔增加20%",
+    "isFusable": true
+  },
+  {
+    "id": "T086",
+    "name": "摸魚之樂",
+    "category": "造物",
+    "description": "造物型在產出資源時，有10%的機率不扣除活躍度。產出資源的時間間隔增加20%",
+    "isFusable": true
+  },
+  {
+    "id": "T087",
+    "name": "靈光一閃",
+    "category": "造物",
+    "description": "造物型在產出資源時，有1%的機率多10個。但是產出資源的時間間隔增加50%",
+    "isFusable": true
+  },
+  {
+    "id": "T088",
+    "name": "喜加一",
+    "category": "造物",
+    "description": "造物型在產出資源時，有5%的機率多2個。但是產出資源的時間間隔增加20%",
+    "isFusable": true
+  },
+  {
+    "id": "T089",
+    "name": "笨手笨腳",
+    "category": "造物",
+    "description": "造物型在產出資源時，有5%的機率少1個",
+    "isFusable": true
+  },
+  {
+    "id": "T090",
+    "name": "買一送一",
+    "category": "造物",
+    "description": "造物型在產出資源時，有5%的機率多1個",
+    "isFusable": true
+  },
+  {
+    "id": "T091",
+    "name": "再來一瓶",
+    "category": "造物",
+    "description": "造物型在產出資源時，有2%的機率多產出2個",
+    "isFusable": true
+  },
+  {
+    "id": "T092",
+    "name": "合眾為一",
+    "category": "造物",
+    "description": "造物型產出資源時。領地內每增加一個領地型異常物，則產出+1 (離線一段時間後失效)",
+    "isFusable": true
+  },
+  {
+    "id": "T093",
+    "name": "不存在的小杯",
+    "category": "造物",
+    "description": "造物型可容納資源的上限減少10%",
+    "isFusable": true
+  },
+  {
+    "id": "T094",
+    "name": "中杯",
+    "category": "造物",
+    "description": "造物型可容納資源的上限增加10%",
+    "isFusable": true
+  },
+  {
+    "id": "T095",
+    "name": "大杯",
+    "category": "造物",
+    "description": "造物型可容納資源的上限增加20%",
+    "isFusable": true
+  },
+  {
+    "id": "T096",
+    "name": "超大杯",
+    "category": "造物",
+    "description": "造物型可容納資源的上限增加30%",
+    "isFusable": true
+  },
+  {
+    "id": "T097",
+    "name": "舉手之勞",
+    "category": "造物",
+    "description": "造物型異常物產出資源時，有3%的機率不扣除活躍度",
+    "isFusable": true
+  },
+  {
+    "id": "T098",
+    "name": "易如反掌",
+    "category": "造物",
+    "description": "造物型異常物產出資源時，有5%的機率不扣除活躍度",
+    "isFusable": true
+  },
+  {
+    "id": "T099",
+    "name": "白手起家",
+    "category": "造物",
+    "description": "造物型異常物產出資源時，有3%的機率不扣除異常能量",
+    "isFusable": true
+  },
+  {
+    "id": "T100",
+    "name": "無中生有",
+    "category": "造物",
+    "description": "造物型異常物產出資源時，有5%的機率不扣除異常能量",
+    "isFusable": true
+  },
+  {
+    "id": "T101",
+    "name": "礦脈賦能",
+    "category": "造物",
+    "description": "在油田範圍內，造物型異常物出資源時，有20%機率增加1",
+    "isFusable": true
+  },
+  {
+    "id": "T102",
+    "name": "星塵賦能",
+    "category": "造物",
+    "description": "在汙染區內，造物型產出資源時，有20%機率增加1",
+    "isFusable": true
+  },
+  {
+    "id": "T103",
+    "name": "工號37 - 原型機",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "工號37",
+    "isFusable": true
+  },
+  {
+    "id": "T104",
+    "name": "工號37 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加20%",
+    "boundSpecies": "工號37",
+    "isFusable": true
+  },
+  {
+    "id": "T105",
+    "name": "發財骰",
+    "category": "通用",
+    "description": "一顆不會讓你失望的骰子，願你的未來永遠有好運相伴。異常能量上限增加6%",
+    "boundSpecies": "元素小子",
+    "isFusable": true
+  },
+  {
+    "id": "T106",
+    "name": "自願加班 - 棱彩",
+    "category": "領地",
+    "description": "異常物外觀發生了改變，同時在啟動工作中時，有15%的機率不消耗活躍度",
+    "boundSpecies": "元素小子",
+    "isFusable": true
+  },
+  {
+    "id": "T107",
+    "name": "金石語者 - 純金",
+    "category": "領地",
+    "description": "異常物外觀發生了改變，同時在外出探索時，有機率帶回額外的礦石",
+    "boundSpecies": "元素小子",
+    "isFusable": true
+  },
+  {
+    "id": "T108",
+    "name": "元素小子 - 一方通行",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時自身的光照偏好會得到滿足",
+    "boundSpecies": "元素小子",
+    "isFusable": true
+  },
+  {
+    "id": "T109",
+    "name": "元素小子 - 綠寶石",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "元素小子",
+    "isFusable": true
+  },
+  {
+    "id": "T110",
+    "name": "焦油布丁 - 佳釀",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量恢復速度增加10%",
+    "boundSpecies": "焦油布丁",
+    "isFusable": true
+  },
+  {
+    "id": "T111",
+    "name": "焦油布丁 - 輻輝",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "焦油布丁",
+    "isFusable": true
+  },
+  {
+    "id": "T112",
+    "name": "願望箱 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "願望箱",
+    "isFusable": true
+  },
+  {
+    "id": "T113",
+    "name": "龐然大菇 - 幽蕈",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "龐然大菇",
+    "isFusable": true
+  },
+  {
+    "id": "T114",
+    "name": "毒理學家 - 一見青",
+    "category": "領地",
+    "description": "異常物外觀發生了改變。在汙染區工作時，有25%機率不消耗能量",
+    "boundSpecies": "龐然大菇",
+    "isFusable": true
+  },
+  {
+    "id": "T115",
+    "name": "龐然大菇 - 異變共棲",
+    "category": "通用",
+    "description": "異常物外觀發生了改變。領地型異常物在汙染區工作時，有10%機率不消耗能量",
+    "boundSpecies": "龐然大菇",
+    "isFusable": false
+  },
+  {
+    "id": "T116",
+    "name": "天性樂觀 - 大加倍",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度上限增加40%",
+    "boundSpecies": "龐然大菇",
+    "isFusable": true
+  },
+  {
+    "id": "T117",
+    "name": "天性樂觀 - 大吉大利",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度上限增加40%",
+    "boundSpecies": "異維大貓",
+    "isFusable": true
+  },
+  {
+    "id": "T118",
+    "name": "水域休眠 - 大橘為重",
+    "category": "領地",
+    "description": "異常物外觀發生了改變，同時在水邊休息時，活躍值恢復速度提升35%",
+    "boundSpecies": "異維大貓",
+    "isFusable": true
+  },
+  {
+    "id": "T119",
+    "name": "夢裡什麼都有 - 月亮鑽石",
+    "category": "領地",
+    "description": "異常物外觀發生了改變，同時在休眠中恢復能量時，有20%的機率幫助其他領地型異常物恢復15點異常能量",
+    "boundSpecies": "異維大貓",
+    "isFusable": true
+  },
+  {
+    "id": "T120",
+    "name": "蝶之夢 - 異變共棲",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時在休眠中恢復能量時，有20%的機率幫助其他領地型異常物恢復15點異常能量",
+    "boundSpecies": "蝶之夢",
+    "isFusable": false
+  },
+  {
+    "id": "T121",
+    "name": "後備能源 - 錯位童話",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T122",
+    "name": "能量穩固 - 錫兵",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時能量的上限增加35",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T123",
+    "name": "活躍穩固 - 黃金年代",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度的上限增加35",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T124",
+    "name": "胡桃鉗 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度的上限增加35",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T125",
+    "name": "電錶倒轉 - 正紫",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量恢復速度增加15%",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T126",
+    "name": "活力四射 - 麗紫",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T127",
+    "name": "綠野",
+    "category": "通用",
+    "description": "能量的上限增加10",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T128",
+    "name": "銅綠",
+    "category": "通用",
+    "description": "異常能量上限增加7%",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T129",
+    "name": "棗褐",
+    "category": "通用",
+    "description": "活躍度上限增加7%",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T130",
+    "name": "碧湖",
+    "category": "通用",
+    "description": "異常能量恢復速度提升7%",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T131",
+    "name": "木黃",
+    "category": "通用",
+    "description": "活躍度恢復速度提升7%",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T132",
+    "name": "聖誕節",
+    "category": "領地",
+    "description": "領地型異常物在工作時，消耗能量和活躍度的時間間隔增加5%",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T133",
+    "name": "海軍上將",
+    "category": "領地",
+    "description": "異常物在啟動工作中時，有3%機率不消耗異常能量",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T134",
+    "name": "糖果衛兵",
+    "category": "領地",
+    "description": "異常物在啟動工作中時，有3%機率不消耗活躍度",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T135",
+    "name": "鑽石伯爵",
+    "category": "領地",
+    "description": "領地型異常物在汙染區工作時，有5%機率不消耗能量",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T136",
+    "name": "非完美永動 - 雅紫",
+    "category": "領地",
+    "description": "異常物的外觀發生了改變，同時在啟動工作時，有20%機率不消耗異常能量",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T137",
+    "name": "星塵親合 - 海藍",
+    "category": "領地",
+    "description": "異常物外觀發生了改變，同時在汙染區工作時，有30%機率不消耗活躍值",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T138",
+    "name": "工作狂 - 交錯光影",
+    "category": "領地",
+    "description": "異常物的外觀發生了改變，同時在工作時，消耗能量和活躍度的時間間隔增加20%",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T139",
+    "name": "甜言蜜語 - 白銀紳士",
+    "category": "領地",
+    "description": "異常物外觀發生了改變，同時在休眠中恢復活躍度時，有25%的機率幫助其他領地型異常物恢復10點活躍度",
+    "boundSpecies": "胡桃夾子",
+    "isFusable": true
+  },
+  {
+    "id": "T140",
+    "name": "乖乖兔 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量上限增加40%",
+    "boundSpecies": "乖乖兔",
+    "isFusable": true
+  },
+  {
+    "id": "T141",
+    "name": "乖乖兔 - 水瓶座",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "乖乖兔",
+    "isFusable": true
+  },
+  {
+    "id": "T142",
+    "name": "乖乖兔 - 饕餮兔",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量恢復速度增加15%",
+    "boundSpecies": "乖乖兔",
+    "isFusable": true
+  },
+  {
+    "id": "T143",
+    "name": "毒理學家 - 叛逆黑",
+    "category": "領地",
+    "description": "異常物外觀發生了改變，同時在外出探索時，有機率帶回酸液",
+    "boundSpecies": "乖乖兔",
+    "isFusable": true
+  },
+  {
+    "id": "T144",
+    "name": "荒林精魂 - 愛麗絲",
+    "category": "領地",
+    "description": "異常物外觀發生了改變，同時在外出探索時，有10%的機率帶回變異花朵",
+    "boundSpecies": "乖乖兔",
+    "isFusable": true
+  },
+  {
+    "id": "T145",
+    "name": "燈花有餘",
+    "category": "通用",
+    "description": "一盞裝滿幸福的花燈，願你年年有餘，幸福美滿。活躍度上限增加8%",
+    "boundSpecies": "蜂團團",
+    "isFusable": true
+  },
+  {
+    "id": "T146",
+    "name": "南瓜燈",
+    "category": "通用",
+    "description": "異常能量上限增加10%",
+    "boundSpecies": "蜂團團",
+    "isFusable": true
+  },
+  {
+    "id": "T147",
+    "name": "電鰻 - 金色閃電",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量恢復速度增加15%",
+    "boundSpecies": "電鰻",
+    "isFusable": true
+  },
+  {
+    "id": "T148",
+    "name": "電鰻 - 月之預兆",
+    "category": "通用",
+    "description": "異常物的外觀發生了改變。領地型異常物在工作時，消耗能量和活躍度的時間間隔增加20%",
+    "boundSpecies": "電鰻",
+    "isFusable": false
+  },
+  {
+    "id": "T149",
+    "name": "電鰻 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度的上限增加35",
+    "boundSpecies": "電鰻",
+    "isFusable": true
+  },
+  {
+    "id": "T150",
+    "name": "炎之精 - 王子",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度的上限增加35",
+    "boundSpecies": "炎之精",
+    "isFusable": true
+  },
+  {
+    "id": "T151",
+    "name": "炎之精 - 金蟾",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加20%",
+    "boundSpecies": "炎之精",
+    "isFusable": true
+  },
+  {
+    "id": "T152",
+    "name": "小紙人 - 魔女愛物",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加20%",
+    "boundSpecies": "小紙人",
+    "isFusable": true
+  },
+  {
+    "id": "T153",
+    "name": "小紙人 - 次聲幻象",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "小紙人",
+    "isFusable": true
+  },
+  {
+    "id": "T154",
+    "name": "雨人 - 童趣",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "雨人",
+    "isFusable": true
+  },
+  {
+    "id": "T155",
+    "name": "雨人 - 童心",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時活躍度恢復速度增加30%",
+    "boundSpecies": "雨人",
+    "isFusable": true
+  },
+  {
+    "id": "T156",
+    "name": "雨人 - 光雨",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時異常能量恢復速度增加15%",
+    "boundSpecies": "雨人",
+    "isFusable": true
+  },
+  {
+    "id": "T157",
+    "name": "雨人 - 異變共棲",
+    "category": "通用",
+    "description": "異常物外觀發生了改變。異常物在汙染區工作時，有30%機率不消耗活躍值",
+    "boundSpecies": "雨人",
+    "isFusable": false
+  },
+  {
+    "id": "T158",
+    "name": "聖誕精靈",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，異常能量上限增加10%，異常能量恢復速度增加5%",
+    "boundSpecies": "木工河狸",
+    "isFusable": true
+  },
+  {
+    "id": "T159",
+    "name": "聖誕精靈",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，異常能量上限增加10%，異常能量恢復速度增加5%",
+    "boundSpecies": "青龍",
+    "isFusable": true
+  },
+  {
+    "id": "T160",
+    "name": "藍色音浪",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，異常能量上限增加10%，異常能量恢復速度增加5%",
+    "boundSpecies": "青龍",
+    "isFusable": true
+  },
+  {
+    "id": "T161",
+    "name": "魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T162",
+    "name": "鱸魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T163",
+    "name": "鯉魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T164",
+    "name": "藍孔雀航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T165",
+    "name": "太陽魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T166",
+    "name": "黑玫瑰航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T167",
+    "name": "亞口魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T168",
+    "name": "斑點航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T169",
+    "name": "鱅魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T170",
+    "name": "黃金尖刀航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T171",
+    "name": "血紋航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T172",
+    "name": "吳郭魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T173",
+    "name": "紅巨星航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T174",
+    "name": "神仙魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T175",
+    "name": "紫氣東來航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T176",
+    "name": "純白航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T177",
+    "name": "龍魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T178",
+    "name": "血玉航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T179",
+    "name": "青花瓷航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T180",
+    "name": "圖麗魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T181",
+    "name": "琥珀航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T182",
+    "name": "錦鯉航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T183",
+    "name": "雲紋航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T184",
+    "name": "鯧鰺航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T185",
+    "name": "蛋白石航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T186",
+    "name": "梭魚航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T187",
+    "name": "碧青航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且在帶回資源時，有2%機率帶回1個魚餌",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T188",
+    "name": "極寒水母航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，且當該異常物處於收容單元時，玩家在領地內會獲得5點炎熱抗性(效果不可疊加)",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T189",
+    "name": "電鰻航員 - 常綠",
+    "category": "通用",
+    "description": "異常物外觀發生了改變，同時自身的光照偏好會得到滿足",
+    "boundSpecies": "魚航員",
+    "isFusable": true
+  },
+  {
+    "id": "T190",
+    "name": "夢裡什麼都有",
+    "category": "領地",
+    "description": "異常物在休眠中恢復能量時，有10%機率幫助其他領地型異常物恢復10點異常能量",
+    "isFusable": true
+  },
+  {
+    "id": "T191",
+    "name": "反精神內耗",
+    "category": "領地",
+    "description": "異常物在休眠中恢復能量時，有20%機率幫助其他領地型異常物恢復5點異常能量",
+    "isFusable": true
+  },
+  {
+    "id": "T192",
+    "name": "風情萬種",
+    "category": "領地",
+    "description": "異常物在休眠中恢復活躍度時，有10%機率幫助其他領地型異常物恢復20點活躍度",
+    "isFusable": true
+  },
+  {
+    "id": "T193",
+    "name": "甜言蜜語",
+    "category": "領地",
+    "description": "異常物在休眠中恢復活躍度時，有20%機率幫助其他領地型異常物恢復5點活躍度",
+    "isFusable": true
+  },
+  {
+    "id": "T194",
+    "name": "迷惑行為",
+    "category": "領地",
+    "description": "異常能量下降時，有10%機率影響其他領地型異常物能量下降",
+    "isFusable": true
+  },
+  {
+    "id": "T195",
+    "name": "萬人迷",
+    "category": "領地",
+    "description": "\"異常能量下降時，有10%機率影響其他領地型異常物能量下降。在休眠中恢復活躍度時，有10%機率幫助其他領地型異常物恢復5點活躍度\"",
+    "isFusable": true
+  },
+  {
+    "id": "T196",
+    "name": "拖後腿",
+    "category": "領地",
+    "description": "活躍度下降時，有10%機率影響其他領地型異常物活躍度下降",
+    "isFusable": true
+  },
+  {
+    "id": "T197",
+    "name": "睡夢羅漢",
+    "category": "領地",
+    "description": "\"活躍度下降時，有10%機率影響其他領地型異常物活躍度下降。在休眠中恢復能量時，有10%機率幫助其他領地型異常物恢復5點異常能量\"",
+    "isFusable": true
+  },
+  {
+    "id": "T198",
+    "name": "摸魚",
+    "category": "領地",
+    "description": "領地型異常物在工作時，消耗能量和活躍度的時間間隔減少5%",
+    "isFusable": true
+  },
+  {
+    "id": "T199",
+    "name": "工作狂",
+    "category": "領地",
+    "description": "領地型異常物在工作時，消耗能量和活躍度的時間間隔增加10%",
+    "isFusable": true
+  },
+  {
+    "id": "T200",
+    "name": "真正的捲王",
+    "category": "領地",
+    "description": "領地型異常物在工作時，消耗能量和活躍度的時間間隔增加20%",
+    "isFusable": true
+  },
+  {
+    "id": "T201",
+    "name": "老馬識途",
+    "category": "領地",
+    "description": "領地型異常物在工作時，消耗能量和活躍度頻率增加。工作返回的時間間隔減少10%",
+    "isFusable": true
+  },
+  {
+    "id": "T202",
+    "name": "全圖視野",
+    "category": "領地",
+    "description": "領地型異常物工作回傳的時間間隔減少20%",
+    "isFusable": true
+  },
+  {
+    "id": "T203",
+    "name": "活地圖",
+    "category": "領地",
+    "description": "領地型異常物工作返回的時間間隔減少5%",
+    "isFusable": true
+  },
+  {
+    "id": "T204",
+    "name": "懶骨頭",
+    "category": "領地",
+    "description": "領地型異常物工作回傳的時間間隔增加5%",
+    "isFusable": true
+  },
+  {
+    "id": "T205",
+    "name": "喜加一",
+    "category": "領地",
+    "description": "領地型異常物在帶回資源時，有5%機率帶回稀有結晶。但返回時間間隔增加",
+    "isFusable": true
+  },
+  {
+    "id": "T206",
+    "name": "荒林精魂",
+    "category": "領地",
+    "description": "領地型異常物在帶回資源時，有5%機率帶回變異花朵",
+    "isFusable": true
+  },
+  {
+    "id": "T207",
+    "name": "毒理學家",
+    "category": "領地",
+    "description": "領地型異常物在帶回資源時，有機率帶回酸液",
+    "isFusable": true
+  },
+  {
+    "id": "T208",
+    "name": "金石語者",
+    "category": "領地",
+    "description": "領地型異常物在帶回資源時，有機率帶回額外的礦石",
+    "isFusable": true
+  },
+  {
+    "id": "T209",
+    "name": "自願加班",
+    "category": "領地",
+    "description": "異常物在活化工作時，有10%機率不消耗活躍度",
+    "isFusable": true
+  },
+  {
+    "id": "T210",
+    "name": "非完美永動",
+    "category": "領地",
+    "description": "異常物在活化工作時，有10%機率不消耗異常能量",
+    "isFusable": true
+  },
+  {
+    "id": "T211",
+    "name": "水域休眠中",
+    "category": "領地",
+    "description": "領地型異常物在水邊休息時候，活躍值恢復速度提升30%",
+    "isFusable": true
+  },
+  {
+    "id": "T212",
+    "name": "親近水域",
+    "category": "領地",
+    "description": "領地型異常物在水邊休息時候，能量恢復速度提升30%",
+    "isFusable": true
+  },
+  {
+    "id": "T213",
+    "name": "星塵親和",
+    "category": "領地",
+    "description": "領地型異常物在汙染區工作時，有20%機率不消耗活躍值",
+    "isFusable": true
+  },
+  {
+    "id": "T214",
+    "name": "星塵賦能",
+    "category": "領地",
+    "description": "領地型異常物在汙染區工作時，有20%機率不消耗能量",
+    "isFusable": true
+  },
+  {
+    "id": "T215",
+    "name": "活力四射1",
+    "category": "通用",
+    "description": "活躍度恢復速度增加5%",
+    "isFusable": true
+  },
+  {
+    "id": "T216",
+    "name": "活力四射2",
+    "category": "通用",
+    "description": "活躍度恢復速度增加10%",
+    "isFusable": true
+  },
+  {
+    "id": "T217",
+    "name": "活力四射3",
+    "category": "通用",
+    "description": "活躍度恢復速度增加15%",
+    "isFusable": true
+  },
+  {
+    "id": "T218",
+    "name": "活力四射4",
+    "category": "通用",
+    "description": "活躍度恢復速度增加20%",
+    "isFusable": true
+  },
+  {
+    "id": "T219",
+    "name": "活力四射5",
+    "category": "通用",
+    "description": "活躍度恢復速度增加25%",
+    "isFusable": true
+  },
+  {
+    "id": "T220",
+    "name": "活躍穩固",
+    "category": "通用",
+    "description": "活躍度的上限增加30",
+    "isFusable": true
+  },
+  {
+    "id": "T221",
+    "name": "天性樂觀1",
+    "category": "通用",
+    "description": "活躍度上限增加15%",
+    "isFusable": true
+  },
+  {
+    "id": "T222",
+    "name": "天性樂觀2",
+    "category": "通用",
+    "description": "活躍度上限增加20%",
+    "isFusable": true
+  },
+  {
+    "id": "T223",
+    "name": "天性樂觀3",
+    "category": "通用",
+    "description": "活躍度上限增加25%",
+    "isFusable": true
+  },
+  {
+    "id": "T224",
+    "name": "天性樂觀4",
+    "category": "通用",
+    "description": "活躍度上限增加30%",
+    "isFusable": true
+  },
+  {
+    "id": "T225",
+    "name": "天性樂觀5",
+    "category": "通用",
+    "description": "活躍度上限增加35%",
+    "isFusable": true
+  },
+  {
+    "id": "T226",
+    "name": "激發活力1",
+    "category": "通用",
+    "description": "活躍度上限增加30%。異常能量恢復速度下降5%",
+    "isFusable": true
+  },
+  {
+    "id": "T227",
+    "name": "激發活力2",
+    "category": "通用",
+    "description": "活躍度上限增加40%。異常能量恢復速度下降5%",
+    "isFusable": true
+  },
+  {
+    "id": "T228",
+    "name": "激發活力3",
+    "category": "通用",
+    "description": "活躍度上限增加50%。異常能量恢復速度下降5%",
+    "isFusable": true
+  },
+  {
+    "id": "T229",
+    "name": "憂鬱",
+    "category": "通用",
+    "description": "活躍度上限減少5.0%",
+    "isFusable": true
+  },
+  {
+    "id": "T230",
+    "name": "抑鬱2",
+    "category": "通用",
+    "description": "活躍度上限減少10.0%",
+    "isFusable": true
+  },
+  {
+    "id": "T231",
+    "name": "電表倒轉1",
+    "category": "通用",
+    "description": "異常能量恢復速度增加5%",
+    "isFusable": true
+  },
+  {
+    "id": "T232",
+    "name": "電表倒轉2",
+    "category": "通用",
+    "description": "異常能量恢復速度增加10%",
+    "isFusable": true
+  },
+  {
+    "id": "T233",
+    "name": "能量穩固",
+    "category": "通用",
+    "description": "能量的上限增加30",
+    "isFusable": true
+  },
+  {
+    "id": "T234",
+    "name": "後備隱藏能源1",
+    "category": "通用",
+    "description": "異常能量上限增加15%",
+    "isFusable": true
+  },
+  {
+    "id": "T235",
+    "name": "後備隱藏能源2",
+    "category": "通用",
+    "description": "異常能量上限增加20%",
+    "isFusable": true
+  },
+  {
+    "id": "T236",
+    "name": "後備隱藏能源3",
+    "category": "通用",
+    "description": "異常能量上限增加25%",
+    "isFusable": true
+  },
+  {
+    "id": "T237",
+    "name": "後備隱藏能源4",
+    "category": "通用",
+    "description": "異常能量上限增加30%",
+    "isFusable": true
+  },
+  {
+    "id": "T238",
+    "name": "後備隱藏能源5",
+    "category": "通用",
+    "description": "異常能量上限增加35%",
+    "isFusable": true
+  },
+  {
+    "id": "T239",
+    "name": "拓展內在1",
+    "category": "通用",
+    "description": "異常能量上限增加30%。活躍度恢復速度下降5%",
+    "isFusable": true
+  },
+  {
+    "id": "T240",
+    "name": "拓展內在2",
+    "category": "通用",
+    "description": "異常能量上限增加40%。活躍度恢復速度下降5%",
+    "isFusable": true
+  },
+  {
+    "id": "T241",
+    "name": "拓展內在3",
+    "category": "通用",
+    "description": "異常能量上限增加50%。活躍度恢復速度下降5%",
+    "isFusable": true
+  },
+  {
+    "id": "T242",
+    "name": "陳舊",
+    "category": "通用",
+    "description": "異常能量上限減少5%",
+    "isFusable": true
+  },
+  {
+    "id": "T243",
+    "name": "陳舊2",
+    "category": "通用",
+    "description": "異常能量上限減少10%",
+    "isFusable": true
+  },
+  {
+    "id": "T244",
+    "name": "勢能轉換",
+    "category": "通用",
+    "description": "每當能量降為0的時候自動消耗活躍度恢復能量",
+    "isFusable": true
+  },
+  {
+    "id": "T245",
+    "name": "極地怪獸",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。所處領地的環境溫度低於0度時，其攻擊力增加10%",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T246",
+    "name": "極地怪獸",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。所處領地的環境溫度低於0度時，活躍度恢復速度增加10%",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T247",
+    "name": "噩夢水域",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，潛水時耐力消耗大幅降低，肺活量大幅提升",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T248",
+    "name": "噩夢水域",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。領地在水域附近時，異常物生產時，有機會可額外獲得漁獲",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T249",
+    "name": "腐穢共生",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。在異常物參與擊殺怪物時，戰利品有10%機率額外增加1個酸液",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T250",
+    "name": "腐穢共生",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。在汙染區生產時，有10%機率額外獲得1個酸液",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T251",
+    "name": "草食動物",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，周圍的食草動物不會被玩家嚇跑",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T252",
+    "name": "草食動物",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。產出時有機會額外產出1個變異植物",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T253",
+    "name": "貓科動物",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，自高處跌落傷害降低50%且不會骨折",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T254",
+    "name": "貓科動物",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。領地型異常物的移動速度增加10%",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T255",
+    "name": "貓科動物",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。當領地內的異維大貓處於活躍狀態時，此異常物在生產時可能額外產出1個「輕盈」道具",
+    "boundSpecies": "造物",
+    "isFusable": true
+  },
+  {
+    "id": "T256",
+    "name": "頂級牛馬",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，進行砍樹、挖礦等採集行為時不消耗耐力",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T257",
+    "name": "頂級牛馬",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。能量下降到10%時，能夠將活躍度自動轉換為能量，以便繼續保持工作",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T258",
+    "name": "大力出奇蹟",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，玩家翻滾動作以及「流型」錯亂下的空中衝刺會破壞碰觸到的礦石及樹木，但無法從它們獲得資源\"",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T259",
+    "name": "大力出奇蹟",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。有10%機率使獲得資源數量加倍",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T260",
+    "name": "月色突襲",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。夜間，能量和活躍的恢復速率加快",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T261",
+    "name": "月色突襲",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。能量和活躍的恢復速率在夜間加快15%",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T262",
+    "name": "心靈按摩",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，理智會緩慢恢復",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T263",
+    "name": "心靈按摩",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。玩家回到領地時，恢復10%的理智值(冷卻10分鐘)",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T264",
+    "name": "乾淨衛生",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，玩家理智值低於20%時自動恢復至 20%",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T265",
+    "name": "乾淨衛生",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。玩家於領地內時，理智值不會低於20%",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T266",
+    "name": "汙染適配",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，在汙染區內，玩家會獲得20點汙染抗性",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T267",
+    "name": "汙染適配",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。汙染區範圍內，該異常物的異常能量上限增加15",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T268",
+    "name": "溫暖火苗",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，玩家的寒冷抗性增加10",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T269",
+    "name": "溫暖火苗",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。玩家在領地內時，寒冷抗性增加10",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T270",
+    "name": "掌控溫度",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，玩家的炎熱抗性增加10",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T271",
+    "name": "掌控溫度",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。玩家在領地內時，炎熱抗性增加10",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T272",
+    "name": "圓桌騎士",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。略微降低此異常物受到的傷害",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T273",
+    "name": "圓桌騎士",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。異常物的防禦力增加5%，受擊時能量消耗降低",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T274",
+    "name": "額外裝載",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，負重上限增加20",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T275",
+    "name": "額外裝載",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。造物型異常物可儲存的空間增加15%",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T276",
+    "name": "靈光一閃",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。同步後，玩家在受到攻擊時，會探照攻擊者並使其造成的槍械傷害降低10%，持續2秒(60秒冷卻)",
+    "boundSpecies": "戰鬥",
+    "isFusable": true
+  },
+  {
+    "id": "T277",
+    "name": "靈光一閃",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。此異常物的光照收容條件會得到滿足",
+    "boundSpecies": "領地",
+    "isFusable": true
+  },
+  {
+    "id": "T278",
+    "name": "童心未泯",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。此異常物的玩具收容條件會得到滿足",
+    "isFusable": true
+  },
+  {
+    "id": "T279",
+    "name": "音樂共鳴",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。此異常物的音樂收容條件會得到滿足",
+    "isFusable": true
+  },
+  {
+    "id": "T280",
+    "name": "精準時刻",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化。每小時會給領地內所有異常物增加10活躍度增加10異常能量(效果不可疊加)",
+    "isFusable": true
+  },
+  {
+    "id": "T281",
+    "name": "霓虹閃爍",
+    "category": "變異",
+    "description": "部分擁有此效果的異常物外觀發生變化，領地內每擁有1個「霓虹閃爍」特性的異常物，所有異常物的心情上限增加1",
+    "isFusable": true
+  },
+  {
+    "id": "T282",
+    "name": "混沌",
+    "category": "混沌",
+    "description": "圖鑑價值極高的混沌特性",
+    "boundSpecies": "願望先生",
+    "isFusable": false
+  },
+  {
+    "id": "T283",
+    "name": "混沌",
+    "category": "混沌",
+    "description": "圖鑑價值極高的混沌特性",
+    "boundSpecies": "異維大貓",
+    "isFusable": false
+  },
+  {
+    "id": "T284",
+    "name": "混沌",
+    "category": "混沌",
+    "description": "圖鑑價值極高的混沌特性",
+    "boundSpecies": "紅龍",
+    "isFusable": false
+  },
+  {
+    "id": "T285",
+    "name": "混沌",
+    "category": "混沌",
+    "description": "圖鑑價值極高的混沌特性",
+    "boundSpecies": "迷你奇點",
+    "isFusable": false
+  },
+  {
+    "id": "T286",
+    "name": "混沌",
+    "category": "混沌",
+    "description": "圖鑑價值極高的混沌特性",
+    "boundSpecies": "冬靈",
+    "isFusable": false
+  },
+  {
+    "id": "T287",
+    "name": "攻擊 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，攻擊+28",
+    "isFusable": true
+  },
+  {
+    "id": "T288",
+    "name": "攻擊 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，攻擊+38",
+    "isFusable": true
+  },
+  {
+    "id": "T289",
+    "name": "攻擊 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，攻擊+50",
+    "isFusable": true
+  },
+  {
+    "id": "T290",
+    "name": "生命值 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，生命值+2350",
+    "isFusable": true
+  },
+  {
+    "id": "T291",
+    "name": "生命 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，生命值+3300",
+    "isFusable": true
+  },
+  {
+    "id": "T292",
+    "name": "生命值 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，生命值+4250",
+    "isFusable": true
+  },
+  {
+    "id": "T293",
+    "name": "百分比攻擊 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，攻擊+10%",
+    "isFusable": true
+  },
+  {
+    "id": "T294",
+    "name": "百分比攻擊 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，攻擊+14%",
+    "isFusable": true
+  },
+  {
+    "id": "T295",
+    "name": "百分比攻擊 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，攻擊+18%",
+    "isFusable": true
+  },
+  {
+    "id": "T296",
+    "name": "百分比生命 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，生命值+10%",
+    "isFusable": true
+  },
+  {
+    "id": "T297",
+    "name": "百分比生命 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，生命值+14%",
+    "isFusable": true
+  },
+  {
+    "id": "T298",
+    "name": "百分比生命 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，生命值+18%",
+    "isFusable": true
+  },
+  {
+    "id": "T299",
+    "name": "物理增傷 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，物理增傷+15%",
+    "isFusable": true
+  },
+  {
+    "id": "T300",
+    "name": "物理增傷 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，物理增傷+21%",
+    "isFusable": true
+  },
+  {
+    "id": "T301",
+    "name": "物理增傷 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，物理增傷+27%",
+    "isFusable": true
+  },
+  {
+    "id": "T302",
+    "name": "元素增傷 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，元素增傷+15%",
+    "isFusable": true
+  },
+  {
+    "id": "T303",
+    "name": "元素增傷 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，元素增傷+21%",
+    "isFusable": true
+  },
+  {
+    "id": "T304",
+    "name": "元素增傷 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，元素增傷+27%",
+    "isFusable": true
+  },
+  {
+    "id": "T305",
+    "name": "物理減傷 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，物理減傷+12%",
+    "isFusable": true
+  },
+  {
+    "id": "T306",
+    "name": "物理減傷 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，物理減傷+17%",
+    "isFusable": true
+  },
+  {
+    "id": "T307",
+    "name": "物理減傷 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，物理減傷+22%",
+    "isFusable": true
+  },
+  {
+    "id": "T308",
+    "name": "元素減傷 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，元素減傷+12%",
+    "isFusable": true
+  },
+  {
+    "id": "T309",
+    "name": "元素減傷 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，元素減傷+17%",
+    "isFusable": true
+  },
+  {
+    "id": "T310",
+    "name": "元素減傷 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，元素減傷+22%",
+    "isFusable": true
+  },
+  {
+    "id": "T311",
+    "name": "暴擊率 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，暴擊率+18%",
+    "isFusable": true
+  },
+  {
+    "id": "T312",
+    "name": "暴擊率 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，暴擊率+25%",
+    "isFusable": true
+  },
+  {
+    "id": "T313",
+    "name": "暴擊率 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，暴擊率+32%",
+    "isFusable": true
+  },
+  {
+    "id": "T314",
+    "name": "暴擊傷害 - 1",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，暴擊傷害+36%",
+    "isFusable": true
+  },
+  {
+    "id": "T315",
+    "name": "暴擊傷害 - 2",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，暴擊傷害+50%",
+    "isFusable": true
+  },
+  {
+    "id": "T316",
+    "name": "暴擊傷害 - 3",
+    "category": "非正常",
+    "description": "該異常物在【非正常收容劇本】召喚後，暴擊傷害+64%",
+    "isFusable": true
+  }
+]

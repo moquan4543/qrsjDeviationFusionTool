@@ -6,7 +6,32 @@
   "Navigation": {
     "deviations": "異常物",
     "skills": "技能",
-    "filter": "提純工具"
+    "filter": "提純工具",
+    "fusionPath": "合成路徑"
+  },
+  "FusionPath": {
+    "title": "合成路徑計算工具",
+    "description": "計算從現有庫存到目標異常物的 100% 確定性合成路徑",
+    "inventoryTitle": "我的庫存",
+    "openInventory": "管理我的庫存",
+    "addInventory": "添加異常物到庫存",
+    "targetTitle": "目標配置",
+    "missingSummary": "缺失材料總結",
+    "missingRequirement": "{name} ({type}) - 用於: {purpose}",
+    "selectTarget": "選擇目標異常物",
+    "selectTraits": "選擇目標特性",
+    "solve": "開始計算",
+    "resultTitle": "合成路徑指引",
+    "noResult": "找不到確定的合成路徑，請檢查庫存或特性組合",
+    "stepTitle": "步驟 {step}",
+    "inventoryItem": "庫存項目",
+    "fusionFormula": "合成公式",
+    "leftParent": "左父本",
+    "rightParent": "右父本",
+    "midIngredients": "中位材料",
+    "evaporatedTraits": "蒸發特性 (不會繼承)",
+    "exportInventory": "匯出庫存數據",
+    "importInventory": "匯入庫存數據"
   },
   "Footer": {
     "dataSource": "部分資料來源:",
@@ -29,6 +54,10 @@
       "filter": {
         "title": "提純工具",
         "description": "精確篩選所需技能，排除不想要的目標"
+      },
+      "fusionPath": {
+        "title": "詞條合成",
+        "description": "計算 100% 確定性的合成路徑指引(限一般劇本)"
       }
     },
     "getStarted": "立即開始"

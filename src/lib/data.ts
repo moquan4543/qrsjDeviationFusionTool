@@ -1,7 +1,8 @@
 
 import abnormalities from '@/data/abnormalities.json';
 import skills from '@/data/skills.json';
-import { Abnormality, Skill } from '@/types';
+import traits from '@/data/traits.json';
+import { Abnormality, Skill, Trait } from '@/types';
 
 export function getAbnormalities(): Abnormality[] {
   return abnormalities as Abnormality[];
@@ -11,12 +12,20 @@ export function getSkills(): Skill[] {
   return skills as Skill[];
 }
 
+export function getTraits(): Trait[] {
+  return traits as Trait[];
+}
+
 export function getSkillById(id: string): Skill | undefined {
   return (skills as Skill[]).find(s => s.id === id || s.name === id);
 }
 
 export function getAbnormalityById(id: string): Abnormality | undefined {
   return (abnormalities as Abnormality[]).find(a => a.id === id);
+}
+
+export function getTraitById(id: string): Trait | undefined {
+  return (traits as Trait[]).find(t => t.id === id || t.name === id);
 }
 
 export function filterAbnormalities(targetSkills: string[], excludeSkills: string[]): Abnormality[] {

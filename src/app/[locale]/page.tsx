@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { routing, Link } from '../../i18n/routing';
+import { Link } from '@/i18n/routing';
 import { motion, Variants } from 'framer-motion';
 import { Package, Sword, Search, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -46,7 +46,7 @@ export default function LandingPage() {
           {t('description')}
         </motion.p>
 
-        <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+        <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           <Link href="/deviations" className="group p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-indigo-500/30 transition-all flex flex-col items-center">
             <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/40 text-indigo-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <Package className="w-6 h-6" />
@@ -65,10 +65,18 @@ export default function LandingPage() {
 
           <Link href="/filter" className="group p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-emerald-500/30 transition-all flex flex-col items-center">
             <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <Search className="w-4 h-4" />
+              <Search className="w-6 h-6" />
             </div>
             <h3 className="font-bold mb-1">{t('cards.filter.title')}</h3>
             <p className="text-xs text-gray-400 text-center">{t('cards.filter.description')}</p>
+          </Link>
+
+          <Link href="/fusion-path" className="group p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md hover:border-purple-500/30 transition-all flex flex-col items-center">
+            <div className="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/40 text-purple-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <Sword className="w-6 h-6 rotate-45" />
+            </div>
+            <h3 className="font-bold mb-1">{t('cards.fusionPath.title')}</h3>
+            <p className="text-xs text-gray-400 text-center">{t('cards.fusionPath.description')}</p>
           </Link>
         </motion.div>
 

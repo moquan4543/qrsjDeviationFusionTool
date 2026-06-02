@@ -6,7 +6,32 @@
   "Navigation": {
     "deviations": "异常物",
     "skills": "技能",
-    "filter": "提纯工具"
+    "filter": "提纯工具",
+    "fusionPath": "合成路径"
+  },
+  "FusionPath": {
+    "title": "合成路径计算器",
+    "description": "计算从现有库存到目标异常物的 100% 确定性合成路径",
+    "inventoryTitle": "我的库存",
+    "openInventory": "管理我的库存",
+    "addInventory": "添加异常物到库存",
+    "targetTitle": "目标配置",
+    "missingSummary": "缺失材料总结",
+    "missingRequirement": "{name} ({type}) - 用于: {purpose}",
+    "selectTarget": "选择目标异常物",
+    "selectTraits": "选择目标特性",
+    "solve": "开始计算",
+    "resultTitle": "合成路径指引",
+    "noResult": "找不到确定的合成路径，请检查库存或特性组合",
+    "stepTitle": "步骤 {step}",
+    "inventoryItem": "库存项目",
+    "fusionFormula": "合成公式",
+    "leftParent": "左父本",
+    "rightParent": "右父本",
+    "midIngredients": "中位材料",
+    "evaporatedTraits": "蒸发特性 (不会继承)",
+    "exportInventory": "导出库存数据",
+    "importInventory": "导入库存数据"
   },
   "Footer": {
     "dataSource": "部分数据来源:",
@@ -29,6 +54,10 @@
       "filter": {
         "title": "提纯工具",
         "description": "精确筛选所需技能，排除不想要的目标"
+      },
+      "fusionPath": {
+        "title": "词条合成",
+        "description": "计算 100% 确定性的合成路径指引(限一般剧本)"
       }
     },
     "getStarted": "立即开始"
