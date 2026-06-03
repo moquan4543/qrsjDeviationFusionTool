@@ -33,132 +33,209 @@ export const useDeviantSolver = () => {
     const allTraits = getTraits();
     const missingElements: MissingRequirement[] = [];
 
-    // Local inventory tracker to handle item counts
     const inventoryCounts = new Map<string, number>();
-    const consumedItems = new Set<string>(); // Tracks items physically used (for mid slots or as final results)
-    
     inventory.forEach(item => inventoryCounts.set(item.id, item.count));
 
-    const consumeItemAsParent = (item: UserInventoryDeviant) => {
-        consumedItems.add(item.id);
+    const isAvailable = (item: UserInventoryDeviant) => (inventoryCounts.get(item.id) ?? 0) > 0;
+    const consumeItem = (item: UserInventoryDeviant) => {
         inventoryCounts.set(item.id, (inventoryCounts.get(item.id) ?? 1) - 1);
     };
 
     const find55Parent = (abId: string, excludeIds: Set<string> = new Set()): UserInventoryDeviant | undefined => {
-        return inventory.find(item => 
+        // Try exact species first
+        const exact = inventory.find(item => 
             item.abnormalityId === abId && 
             item.ability === 5 && item.activity === 5 &&
-            !consumedItems.has(item.id) &&
-            !excludeIds.has(item.id) &&
-            (inventoryCounts.get(item.id) ?? 0) >= 1
+            isAvailable(item) &&
+            !excludeIds.has(item.id)
+        );
+        if (exact) return exact;
+
+        // Fallback to any 5,5 fodder as a dummy parent
+        return inventory.find(item => 
+            item.ability === 5 && item.activity === 5 &&
+            isAvailable(item) &&
+            !excludeIds.has(item.id)
         );
     };
 
     const getTraitCategory = (tid: string): TraitCategory => 
         allTraits.find(t => t.id === tid)?.category || '通用';
 
-    const checkTraitInheritance = (
+    const checkStepSafety = (
+        targetAbnormalityId: string,
         targetTraits: string[],
         left: FusionNode,
         right: FusionNode,
         mids: FusionNode[]
     ) => {
-        const freqMap = new Map<string, number>();
-        const categoryTotalMap = new Map<string, number>();
+        const traitFreq = new Map<string, number>();
+        const categoryFreq = new Map<string, number>();
+        const speciesFreq = new Map<string, number>();
+        let totalSpeciesWeight = 0;
 
-        const addFromNode = (node: FusionNode) => {
+        const processNode = (node: FusionNode) => {
+            if (node.type === 'missing') return;
+
             let traits: string[] = [];
+            let species: string | null = null;
             let multiplier = 1;
+
             if (node.type === 'inventory') {
                 traits = node.traitIds;
+                species = node.abnormalityId;
             } else if (node.type === 'step') {
                 traits = node.step.target.traitIds;
+                species = node.step.target.abnormalityId;
             } else if (node.type === 'mutation_material') {
                 traits = [node.traitId];
-                multiplier = 2; // Mutation material counts as 2 instances for 100% lock
+                multiplier = 2;
+            }
+
+            if (species) {
+                speciesFreq.set(species, (speciesFreq.get(species) || 0) + 1);
+                totalSpeciesWeight += 1;
             }
 
             traits.forEach(tid => {
                 const cat = getTraitCategory(tid);
-                freqMap.set(tid, (freqMap.get(tid) || 0) + multiplier);
-                categoryTotalMap.set(cat, (categoryTotalMap.get(cat) || 0) + multiplier);
+                traitFreq.set(tid, (traitFreq.get(tid) || 0) + multiplier);
+                categoryFreq.set(cat, (categoryFreq.get(cat) || 0) + multiplier);
             });
         };
 
-        addFromNode(left);
-        addFromNode(right);
-        mids.forEach(addFromNode);
+        processNode(left);
+        processNode(right);
+        mids.forEach(processNode);
 
-        const missing: string[] = [];
+        const missingTraits: string[] = [];
         targetTraits.forEach(tid => {
-            const freq = freqMap.get(tid) || 0;
+            const freq = traitFreq.get(tid) || 0;
             const cat = getTraitCategory(tid);
-            const total = categoryTotalMap.get(cat) || 0;
-            // Strict Fix4 rule: Must appear at least twice AND have >= 66.7% share
+            const total = categoryFreq.get(cat) || 0;
+            // 100% inheritance requires freq >= 2 and share >= 66.7%
             if (freq < 2 || (freq / total < 0.666)) {
-                missing.push(tid);
+                missingTraits.push(tid);
             }
         });
 
-        return { isSafe: missing.length === 0, missingTraits: missing };
+        const speciesShare = totalSpeciesWeight > 0 ? (speciesFreq.get(targetAbnormalityId) || 0) / totalSpeciesWeight : 0;
+        const isSpeciesSafe = speciesShare >= 0.666;
+
+        return {
+            isSafe: missingTraits.length === 0 && isSpeciesSafe,
+            missingTraits,
+            isSpeciesSafe
+        };
     };
 
-    const enforceInheritance = (node: FusionNode, targetTraits: string[]): FusionNode => {
+    const enforceInheritance = (node: FusionNode, targetAbnormalityId: string, targetTraits: string[]): FusionNode => {
         if (node.type !== 'step') return node;
         
         const step = node.step;
         const traitsHandledAsMissing = new Set<string>();
+        let speciesHandledAsMissing = false;
         
         while (true) {
-            const inheritance = checkTraitInheritance(targetTraits, step.left, step.right, step.mids);
-            const trueMissingTraits = inheritance.missingTraits.filter(t => !traitsHandledAsMissing.has(t));
+            const safety = checkStepSafety(targetAbnormalityId, targetTraits, step.left, step.right, step.mids);
+            const trueMissingTraits = safety.missingTraits.filter(t => !traitsHandledAsMissing.has(t));
             
-            if (trueMissingTraits.length === 0) break;
+            if (trueMissingTraits.length === 0 && safety.isSpeciesSafe) break;
 
             let addedSomething = false;
-            for (const tid of trueMissingTraits) {
-                const trait = allTraits.find(t => t.id === tid);
-                if (trait?.category === '變異') {
-                    const materialName = trait.description.match(/【(.*?)】/) ? trait.description.match(/【(.*?)】/)![1] : "指定變異材料";
-                    step.mids.push({
-                        type: 'mutation_material',
-                        traitId: tid,
-                        traitName: trait.name,
-                        materialName: materialName
-                    });
-                    addedSomething = true;
-                    break;
-                } else if (step.mids.length < 3) {
-                    const carrier = inventory.find(item => item.traits.includes(tid) && !consumedItems.has(item.id));
-                    if (carrier) {
+
+            // 1. Try to fix missing traits
+            if (trueMissingTraits.length > 0) {
+                for (const tid of trueMissingTraits) {
+                    const trait = allTraits.find(t => t.id === tid);
+                    if (trait?.category === '變異') {
+                        const materialName = trait.description.match(/【(.*?)】/) ? trait.description.match(/【(.*?)】/)![1] : "指定變異材料";
                         step.mids.push({
-                            type: 'inventory',
-                            id: carrier.id,
-                            abnormalityId: carrier.abnormalityId,
-                            traitIds: carrier.traits,
-                            ability: carrier.ability,
-                            activity: carrier.activity
-                        });
-                        consumedItems.add(carrier.id);
-                        addedSomething = true;
-                        break;
-                    } else {
-                        step.isPartial = true;
-                        traitsHandledAsMissing.add(tid);
-                        const traitName = trait?.name || tid;
-                        step.mids.push({
-                            type: 'missing',
-                            requirement: {
-                                type: 'trait',
-                                name: traitName,
-                                purpose: `缺少 1 個【${traitName}】詞條。目前僅能提供 1 次，需要額外在中間材料放入一隻帶有此詞條的異常物以達到 100% 繼承。`
-                            }
+                            type: 'mutation_material',
+                            traitId: tid,
+                            traitName: trait.name,
+                            materialName: materialName
                         });
                         addedSomething = true;
                         break;
+                    } else if (step.mids.length < 3) {
+                        // Find a carrier, prioritizing the target species to help species weight
+                        let carrier = inventory.find(item => 
+                            item.traits.includes(tid) && 
+                            item.abnormalityId === targetAbnormalityId &&
+                            isAvailable(item)
+                        );
+                        if (!carrier) {
+                            carrier = inventory.find(item => 
+                                item.traits.includes(tid) && 
+                                isAvailable(item)
+                            );
+                        }
+
+                        if (carrier) {
+                            step.mids.push({
+                                type: 'inventory',
+                                id: carrier.id,
+                                abnormalityId: carrier.abnormalityId,
+                                traitIds: carrier.traits,
+                                ability: carrier.ability,
+                                activity: carrier.activity
+                            });
+                            consumeItem(carrier);
+                            addedSomething = true;
+                            break;
+                        } else {
+                            step.isPartial = true;
+                            traitsHandledAsMissing.add(tid);
+                            const traitName = trait?.name || tid;
+                            step.mids.push({
+                                type: 'missing',
+                                requirement: {
+                                    type: 'trait',
+                                    name: traitName,
+                                    purpose: `缺少 1 個【${traitName}】詞條。需要額外放入一隻帶有此詞條的異常物以達到 100% 繼承。`
+                                }
+                            });
+                            addedSomething = true;
+                            break;
+                        }
                     }
                 }
             }
+
+            // 2. Try to fix missing species
+            if (!addedSomething && !safety.isSpeciesSafe && step.mids.length < 3 && !speciesHandledAsMissing) {
+                const fodder = inventory.find(item => 
+                    item.abnormalityId === targetAbnormalityId && 
+                    isAvailable(item)
+                );
+                if (fodder) {
+                    step.mids.push({
+                        type: 'inventory',
+                        id: fodder.id,
+                        abnormalityId: fodder.abnormalityId,
+                        traitIds: fodder.traits,
+                        ability: fodder.ability,
+                        activity: fodder.activity
+                    });
+                    consumeItem(fodder);
+                    addedSomething = true;
+                } else {
+                    step.isPartial = true;
+                    speciesHandledAsMissing = true;
+                    const abName = abnormalities.find(a => a.id === targetAbnormalityId)?.name || targetAbnormalityId;
+                    step.mids.push({
+                        type: 'missing',
+                        requirement: {
+                            type: 'species',
+                            name: abName,
+                            purpose: `物種權重不足 (需 >= 66.7%)，需要放入同種物種的墊子。`
+                        }
+                    });
+                    addedSomething = true;
+                }
+            }
+
             if (!addedSomething || step.mids.length >= 3) break;
         }
         return node;
@@ -201,14 +278,10 @@ export const useDeviantSolver = () => {
           item.abnormalityId === targetAbnormalityId && 
           item.ability === 5 && item.activity === 5 &&
           neededTraitIds.every(nt => item.traits.includes(nt)) &&
-          !consumedItems.has(item.id) &&
-          (depth === 0 || (inventoryCounts.get(item.id) ?? 0) >= 1)
+          isAvailable(item)
       );
       if (exactMatch) {
-          consumedItems.add(exactMatch.id);
-          if (depth > 0) {
-              inventoryCounts.set(exactMatch.id, (inventoryCounts.get(exactMatch.id) ?? 1) - 1);
-          }
+          consumeItem(exactMatch);
           return { 
               type: 'inventory', 
               id: exactMatch.id, 
@@ -245,7 +318,7 @@ export const useDeviantSolver = () => {
               } else if (parentRes.type === 'inventory') {
                   const p2 = find55Parent(targetAbnormalityId);
                   if (p2) {
-                      consumeItemAsParent(p2);
+                      consumeItem(p2);
                       resultNode = {
                           type: 'step',
                           step: {
@@ -281,7 +354,7 @@ export const useDeviantSolver = () => {
               }
           }
 
-          const carriers = inventory.filter(item => item.traits.includes(tid) && !consumedItems.has(item.id));
+          const carriers = inventory.filter(item => item.traits.includes(tid) && isAvailable(item));
           if (carriers.length >= 2) {
               const p1 = find55Parent(targetAbnormalityId);
               const p2 = p1 ? find55Parent(targetAbnormalityId, new Set([p1.id])) : undefined;
@@ -289,19 +362,19 @@ export const useDeviantSolver = () => {
               if (p1 && p2) {
                   const validCarriers = carriers.filter(c => c.id !== p1.id && c.id !== p2.id);
                   if (validCarriers.length >= 2) {
-                      consumeItemAsParent(p1);
-                      consumeItemAsParent(p2);
+                      consumeItem(p1);
+                      consumeItem(p2);
                       
                       const midNodes: FusionNode[] = [];
                       for (const carrier of validCarriers.slice(0, 2)) {
                           midNodes.push({ type: 'inventory', id: carrier.id, abnormalityId: carrier.abnormalityId, traitIds: carrier.traits, ability: carrier.ability, activity: carrier.activity });
-                          consumedItems.add(carrier.id);
+                          consumeItem(carrier);
                       }
                       
-                      const fodder = inventory.find(item => item.abnormalityId === targetAbnormalityId && !consumedItems.has(item.id));
+                      const fodder = inventory.find(item => item.abnormalityId === targetAbnormalityId && isAvailable(item));
                       if (fodder) {
                           midNodes.push({ type: 'inventory', id: fodder.id, abnormalityId: fodder.abnormalityId, traitIds: fodder.traits, ability: fodder.ability, activity: fodder.activity });
-                          consumedItems.add(fodder.id);
+                          consumeItem(fodder);
                       }
                       
                       resultNode = {
@@ -341,7 +414,7 @@ export const useDeviantSolver = () => {
       }
 
       // FINAL VALIDATION: Enforce Fix4 inheritance rules
-      return enforceInheritance(resultNode, neededTraitIds);
+      return enforceInheritance(resultNode, targetAbnormalityId, neededTraitIds);
     };
 
     const root = findPath(goal.targetAbnormalityId, goal.desiredTraitIds, 0, new Set());
