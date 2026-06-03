@@ -59,9 +59,6 @@ export const useDeviantSolver = () => {
         );
     };
 
-    const getTraitCategory = (tid: string): TraitCategory => 
-        allTraits.find(t => t.id === tid)?.category || '通用';
-
     const checkStepSafety = (
         targetAbnormalityId: string,
         targetTraits: string[],
@@ -71,10 +68,23 @@ export const useDeviantSolver = () => {
     ) => {
         const traitFreq = new Map<string, number>();
         const categoryFreq = new Map<string, number>();
-        const speciesFreq = new Map<string, number>();
-        let totalSpeciesWeight = 0;
+        
+        // Species Weight Logic (Fix 7/8 specific interpretation)
+        // Offspring species is rolled between parents and applicable mid-slot items.
+        // We identify the species of the two parents.
+        const getSpecies = (node: FusionNode) => {
+            if (node.type === 'inventory') return node.abnormalityId;
+            if (node.type === 'step') return node.step.target.abnormalityId;
+            return null;
+        };
+        const leftSpecies = getSpecies(left);
+        const rightSpecies = getSpecies(right);
+        
+        // Applicable species for the roll are the target species and the other parent's species.
+        // Any third species in mid slots is typically ignored for the offspring species roll in this implementation.
+        let targetSpeciesPoints = 0;
+        let otherParentSpeciesPoints = 0;
 
-        // Flatten all 5 slots into a single evaluation pool (Fix 6 Atomic Evaluation)
         const allNodes = [left, right, ...mids];
 
         allNodes.forEach(node => {
@@ -96,8 +106,13 @@ export const useDeviantSolver = () => {
             }
 
             if (nodeSpecies) {
-                speciesFreq.set(nodeSpecies, (speciesFreq.get(nodeSpecies) || 0) + 1);
-                totalSpeciesWeight += 1;
+                if (nodeSpecies === targetAbnormalityId) {
+                    targetSpeciesPoints += 1;
+                } else if (nodeSpecies === rightSpecies || nodeSpecies === leftSpecies) {
+                    otherParentSpeciesPoints += 1;
+                }
+                // Note: Third species (neither T nor D) are effectively excluded from the denominator
+                // to allow trait-carrying fodders to not pollute the species roll.
             }
 
             // An item increments the counter for ALL of its traits at once
@@ -116,13 +131,13 @@ export const useDeviantSolver = () => {
             const cat = traitMeta?.category || '通用';
             const total = categoryFreq.get(cat) || 0;
             
-            // 100% inheritance requires freq >= 2 and share >= 66.7%
             if (freq < 2 || (freq / total < 0.666)) {
                 missingTraits.push(tid);
             }
         });
 
-        const speciesShare = totalSpeciesWeight > 0 ? (speciesFreq.get(targetAbnormalityId) || 0) / totalSpeciesWeight : 0;
+        const totalApplicablePoints = targetSpeciesPoints + otherParentSpeciesPoints;
+        const speciesShare = totalApplicablePoints > 0 ? targetSpeciesPoints / totalApplicablePoints : 0;
         const isSpeciesSafe = speciesShare >= 0.666;
 
         return {
@@ -136,117 +151,148 @@ export const useDeviantSolver = () => {
         if (node.type !== 'step') return node;
         
         const step = node.step;
-        const traitsHandledAsMissing = new Set<string>();
-        let speciesHandledAsMissing = false;
         
-        while (true) {
-            const safety = checkStepSafety(targetAbnormalityId, targetTraits, step.left, step.right, step.mids);
-            const trueMissingTraits = safety.missingTraits.filter(t => !traitsHandledAsMissing.has(t));
+        // Step 1: Identify Mutation Requirements
+        const mandatoryMids: FusionNode[] = [];
+        targetTraits.forEach(tid => {
+            const trait = allTraits.find(t => t.id === tid);
+            if (trait?.category === '變異') {
+                const materialName = trait.description.match(/【(.*?)】/) ? trait.description.match(/【(.*?)】/)![1] : "指定變異材料";
+                mandatoryMids.push({
+                    type: 'mutation_material',
+                    traitId: tid,
+                    traitName: trait.name,
+                    materialName: materialName
+                });
+            }
+        });
+
+        // Step 2: Gather Candidate Pool
+        const remainingSlots = Math.max(0, 3 - mandatoryMids.length);
+        const candidatePool: UserInventoryDeviant[] = [];
+        
+        inventory.forEach(item => {
+            const count = inventoryCounts.get(item.id) || 0;
+            if (count <= 0) return;
             
-            if (trueMissingTraits.length === 0 && safety.isSpeciesSafe) break;
-
-            let addedSomething = false;
-
-            // 1. Try to fix missing traits
-            if (trueMissingTraits.length > 0) {
-                for (const tid of trueMissingTraits) {
-                    const trait = allTraits.find(t => t.id === tid);
-                    if (trait?.category === '變異') {
-                        const materialName = trait.description.match(/【(.*?)】/) ? trait.description.match(/【(.*?)】/)![1] : "指定變異材料";
-                        step.mids.push({
-                            type: 'mutation_material',
-                            traitId: tid,
-                            traitName: trait.name,
-                            materialName: materialName
-                        });
-                        addedSomething = true;
-                        break;
-                    } else if (step.mids.length < 3) {
-                        // Find a carrier, prioritizing the target species to help species weight
-                        let carrier = inventory.find(item => 
-                            item.traits.includes(tid) && 
-                            item.abnormalityId === targetAbnormalityId &&
-                            isAvailable(item)
-                        );
-                        if (!carrier) {
-                            carrier = inventory.find(item => 
-                                item.traits.includes(tid) && 
-                                isAvailable(item)
-                            );
-                        }
-
-                        if (carrier) {
-                            step.mids.push({
-                                type: 'inventory',
-                                id: carrier.id,
-                                abnormalityId: carrier.abnormalityId,
-                                traitIds: carrier.traits,
-                                ability: carrier.ability,
-                                activity: carrier.activity
-                            });
-                            consumeItem(carrier);
-                            addedSomething = true;
-                            break;
-                        } else {
-                            step.isPartial = true;
-                            traitsHandledAsMissing.add(tid);
-                            const traitName = trait?.name || tid;
-                            step.mids.push({
-                                type: 'missing',
-                                requirement: {
-                                    type: 'trait',
-                                    name: traitName,
-                                    purpose: `缺少 1 個【${traitName}】詞條。需要額外放入一隻帶有此詞條的異常物以達到 100% 繼承。`
-                                }
-                            });
-                            addedSomething = true;
-                            break;
-                        }
-                    }
+            const matchesSpecies = item.abnormalityId === targetAbnormalityId;
+            const matchesTraits = targetTraits.some(tt => item.traits.includes(tt));
+            
+            if (matchesSpecies || matchesTraits) {
+                // Add up to 'remainingSlots' instances of this item to the pool
+                const toAdd = Math.min(count, remainingSlots);
+                for (let i = 0; i < toAdd; i++) {
+                    candidatePool.push(item);
                 }
             }
+        });
 
-            // 2. Try to fix missing species
-            if (!addedSomething && !safety.isSpeciesSafe && step.mids.length < 3 && !speciesHandledAsMissing) {
-                const fodder = inventory.find(item => 
-                    item.abnormalityId === targetAbnormalityId && 
-                    isAvailable(item)
-                );
-                if (fodder) {
+        // Sort to prioritize items with more target traits, then species match, then higher stats
+        candidatePool.sort((a, b) => {
+            const aTraits = targetTraits.filter(tt => a.traits.includes(tt)).length;
+            const bTraits = targetTraits.filter(tt => b.traits.includes(tt)).length;
+            if (aTraits !== bTraits) return bTraits - aTraits;
+            
+            const aSpecies = a.abnormalityId === targetAbnormalityId ? 1 : 0;
+            const bSpecies = b.abnormalityId === targetAbnormalityId ? 1 : 0;
+            if (aSpecies !== bSpecies) return bSpecies - aSpecies;
+
+            return (b.ability + b.activity) - (a.ability + a.activity);
+        });
+
+        const limitedPool = candidatePool.slice(0, 12);
+
+        // Step 3: Permutation Search (Combinations)
+        const getCombinations = <T>(array: T[], n: number): T[][] => {
+            if (n === 0) return [[]];
+            const result: T[][] = [];
+            for (let i = 0; i <= array.length - n; i++) {
+                const subCombos = getCombinations(array.slice(i + 1), n - 1);
+                for (const sub of subCombos) {
+                    result.push([array[i], ...sub]);
+                }
+            }
+            return result;
+        };
+
+        let bestResult: { mids: FusionNode[], safety: any } | null = null;
+        let foundSafe = false;
+
+        // Try combinations of size 0 up to remainingSlots
+        for (let count = 0; count <= remainingSlots; count++) {
+            const combos = getCombinations(limitedPool, count);
+            for (const combo of combos) {
+                const currentMids = [
+                    ...mandatoryMids,
+                    ...combo.map(item => ({
+                        type: 'inventory' as const,
+                        id: item.id,
+                        abnormalityId: item.abnormalityId,
+                        traitIds: item.traits,
+                        ability: item.ability,
+                        activity: item.activity
+                    }))
+                ];
+                
+                const safety = checkStepSafety(targetAbnormalityId, targetTraits, step.left, step.right, currentMids);
+                if (safety.isSafe) {
+                    bestResult = { mids: currentMids, safety };
+                    foundSafe = true;
+                    break;
+                }
+                
+                // Track best effort: fewer missing traits, then species safety
+                if (!bestResult || 
+                    safety.missingTraits.length < bestResult.safety.missingTraits.length ||
+                    (safety.missingTraits.length === bestResult.safety.missingTraits.length && safety.isSpeciesSafe && !bestResult.safety.isSpeciesSafe)) {
+                    bestResult = { mids: currentMids, safety };
+                }
+            }
+            if (foundSafe) break;
+        }
+
+        if (bestResult) {
+            step.mids = bestResult.mids;
+            if (!bestResult.safety.isSafe) {
+                step.isPartial = true;
+                // Add missing nodes as fallback
+                bestResult.safety.missingTraits.forEach((tid: string) => {
+                    const trait = allTraits.find(t => t.id === tid);
+                    const traitName = trait?.name || tid;
                     step.mids.push({
-                        type: 'inventory',
-                        id: fodder.id,
-                        abnormalityId: fodder.abnormalityId,
-                        traitIds: fodder.traits,
-                        ability: fodder.ability,
-                        activity: fodder.activity
+                        type: 'missing',
+                        requirement: {
+                            type: 'trait',
+                            name: traitName,
+                            purpose: `繼承機率未達 100%（需出現 2 次且佔比 >= 66.7%）。`
+                        }
                     });
-                    consumeItem(fodder);
-                    addedSomething = true;
-                } else {
-                    step.isPartial = true;
-                    speciesHandledAsMissing = true;
+                });
+                if (!bestResult.safety.isSpeciesSafe) {
                     const abName = abnormalities.find(a => a.id === targetAbnormalityId)?.name || targetAbnormalityId;
                     step.mids.push({
                         type: 'missing',
                         requirement: {
                             type: 'species',
                             name: abName,
-                            purpose: `物種權重不足 (需 >= 66.7%)，需要放入同種物種的墊子。`
+                            purpose: `物種權重不足 (需 >= 66.7%)。`
                         }
                     });
-                    addedSomething = true;
                 }
             }
 
-            if (!addedSomething || step.mids.length >= 3) break;
+            // Consume picked items
+            bestResult.mids.forEach(m => {
+                if (m.type === 'inventory') {
+                    const item = inventory.find(i => i.id === m.id);
+                    if (item) consumeItem(item);
+                }
+            });
         }
+
         return node;
     };
 
-    /**
-     * findPath searches for a way to create targetAbnormalityId with neededTraitIds and 5,5 rating.
-     */
     const findPath = (
         targetAbnormalityId: string, 
         neededTraitIds: string[], 
@@ -276,7 +322,7 @@ export const useDeviantSolver = () => {
       const newVisited = new Set(visited);
       newVisited.add(currentPathKey);
 
-      // 1. Exact Match Check (Inventory) - Priority 1
+      // 1. Exact Match Check (Inventory)
       const exactMatch = inventory.find(item => 
           item.abnormalityId === targetAbnormalityId && 
           item.ability === 5 && item.activity === 5 &&
@@ -295,11 +341,9 @@ export const useDeviantSolver = () => {
           };
       }
 
-      // 2. Multi-Species Proxy Rule & Inventory-First Strategy (Fix 7) - Priority 2
-      // Try Config Alpha (T+T) or Config Beta (T+D) using existing inventory 5,5 assets.
+      // 2. Inventory-First Strategy (Multi-Species Proxy Rule)
       const p1 = find55Parent(targetAbnormalityId);
       if (p1) {
-          // Seek another 5,5 parent. prioritize same-species (Alpha), then any other (Beta).
           const p2 = find55Parent(targetAbnormalityId, new Set([p1.id])) || find55Parent(undefined, new Set([p1.id]));
           if (p2) {
               consumeItem(p1);
@@ -313,19 +357,16 @@ export const useDeviantSolver = () => {
                   isPartial: false
               };
               
-              // Let enforceInheritance handle mid-slot injection for traits and species weight
               return enforceInheritance({ type: 'step', step }, targetAbnormalityId, neededTraitIds);
           }
       }
 
-      // 3. Recursive Fallback (If no inventory 5,5 parents are available)
+      // 3. Recursive Fallback
       const leftTraits = neededTraitIds.slice(0, Math.ceil(neededTraitIds.length / 2));
       const rightTraits = neededTraitIds.slice(Math.ceil(neededTraitIds.length / 2));
 
-      // Craft P1 (Always target species T)
       const leftNode = findPath(targetAbnormalityId, leftTraits, depth + 1, newVisited);
       
-      // For P2, check if we can use an inventory 5,5 dummy to avoid double recursion (Config Beta optimization)
       const inventoryP2 = find55Parent(undefined); 
       let rightNode: FusionNode;
       if (inventoryP2 && leftNode.type !== 'missing') {
@@ -358,7 +399,6 @@ export const useDeviantSolver = () => {
 
     const root = findPath(goal.targetAbnormalityId, goal.desiredTraitIds, 0, new Set());
 
-    // Collect missing elements
     const collectMissing = (node: FusionNode) => {
         if (node.type === 'missing') {
             if (!missingElements.find(m => m.name === node.requirement.name && m.type === node.requirement.type && m.purpose === node.requirement.purpose)) {
