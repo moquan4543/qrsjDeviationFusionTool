@@ -34,7 +34,7 @@ export const useDeviantSolver = () => {
     const missingElements: MissingRequirement[] = [];
 
     const inventoryCounts = new Map<string, number>();
-    inventory.forEach(item => inventoryCounts.set(item.id, item.count));
+    inventory.forEach(item => inventoryCounts.set(item.id, 1)); // Each entry is a unique instance
 
     const isAvailable = (item: UserInventoryDeviant) => (inventoryCounts.get(item.id) ?? 0) > 0;
     const consumeItem = (item: UserInventoryDeviant) => {
