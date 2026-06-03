@@ -41,14 +41,14 @@ export const useDeviantSolver = () => {
         inventoryCounts.set(item.id, (inventoryCounts.get(item.id) ?? 1) - 1);
     };
 
-    const find55Parent = (abId: string, excludeIds: Set<string> = new Set()): UserInventoryDeviant | undefined => {
+    const find55Parent = (abId: string | undefined, excludeIds: Set<string> = new Set()): UserInventoryDeviant | undefined => {
         // Try exact species first
-        const exact = inventory.find(item => 
+        const exact = abId ? inventory.find(item => 
             item.abnormalityId === abId && 
             item.ability === 5 && item.activity === 5 &&
             isAvailable(item) &&
             !excludeIds.has(item.id)
-        );
+        ) : undefined;
         if (exact) return exact;
 
         // Fallback to any 5,5 fodder as a dummy parent
