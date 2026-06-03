@@ -8,6 +8,7 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { routing, Link } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -117,6 +118,7 @@ export default async function RootLayout({
             </div>
           </footer>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
