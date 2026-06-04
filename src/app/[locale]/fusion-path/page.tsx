@@ -26,6 +26,10 @@ export default function FusionPathPage() {
   const [result, setResult] = useState<any>(null);
   const [rejectedUpgradeIds, setRejectedUpgrades] = useState<Set<string>>(new Set());
 
+  // Upgrade Modal State
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
+  const [pendingUpgradeNode, setPendingUpgradeNode] = useState<any>(null);
+
   const targetAbnormality = useMemo(() => 
     abnormalities.find(a => a.id === targetAbnormalityId), 
     [targetAbnormalityId, abnormalities]
@@ -70,13 +74,18 @@ export default function FusionPathPage() {
   };
 
   const handleAcceptUpgrade = (node: any) => {
-    const step = node.step;
+    setPendingUpgradeNode(node);
+    setIsUpgradeModalOpen(true);
+  };
+
+  const handleConfirmUpgradeResult = (finalResult: { ability: number, activity: number, traits: string[] }) => {
+    if (!pendingUpgradeNode) return;
+    
+    const step = pendingUpgradeNode.step;
     const p1Id = step.left.id;
     const p2Id = step.right.id;
     const midIds = step.mids.filter((m: any) => m.type === 'inventory').map((m: any) => m.id);
-    
-    const success = confirm(`${node.probabilityNote}\n\n是否成功升級為 5,5？\n(按下「確定」代表成功變為 5,5，按下「取消」代表升級失敗)`);
-    
+
     // Standard Fusion Rules:
     // 1. Parents (Left/Right) stay in inventory but count becomes 0.
     // 2. Mid materials are permanently consumed (removed).
@@ -84,38 +93,28 @@ export default function FusionPathPage() {
     let newInventory = inventory
         .filter(item => !midIds.includes(item.id))
         .map(item => (item.id === p1Id || item.id === p2Id) ? { ...item, count: 0 } : item);
-    
-    if (success) {
-        const newItem: UserInventoryDeviant = {
-            id: Math.random().toString(36).substr(2, 9),
-            abnormalityId: step.target.abnormalityId,
-            ability: 5,
-            activity: 5,
-            traits: [...step.target.traitIds],
-            count: 1
-        };
-        newInventory = [newItem, ...newInventory];
-        alert("庫存已更新：父母素材已設為 0 次合成，並加入 5,5 成品。正在重新計算路徑...");
-    } else {
-        const ability = Math.max(step.left.ability, step.right.ability);
-        const activity = Math.max(step.left.activity, step.right.activity);
-        const newItem: UserInventoryDeviant = {
-            id: Math.random().toString(36).substr(2, 9),
-            abnormalityId: step.target.abnormalityId,
-            ability: ability === 5 ? 5 : 4,
-            activity: activity === 5 ? 5 : 4,
-            traits: [...step.target.traitIds],
-            count: 1 // Product always has 1 use
-        };
-        newInventory = [newItem, ...newInventory];
-        alert("升級失敗。父母素材已設為 0 次合成，並加入合成出的低等級成品。");
-    }
-    
+
+    const newItem: UserInventoryDeviant = {
+        id: Math.random().toString(36).substr(2, 9),
+        abnormalityId: step.target.abnormalityId,
+        ability: finalResult.ability,
+        activity: finalResult.activity,
+        traits: finalResult.traits,
+        count: 1
+    };
+
+    newInventory = [newItem, ...newInventory];
     setInventory(newInventory);
+    setIsUpgradeModalOpen(false);
+    setPendingUpgradeNode(null);
+
+    // Re-solve
     setTimeout(() => {
         const res = solve(newInventory, { targetAbnormalityId, desiredTraitIds: selectedTraitIds });
         setResult(res);
     }, 100);
+    
+    alert(`庫存已更新：父母素材已設為 0 次合成，並加入合成出的【${finalResult.ability},${finalResult.activity}】成品。正在重新計算路徑...`);
   };
 
   const handleRejectUpgrade = (node: any) => {
@@ -168,6 +167,15 @@ export default function FusionPathPage() {
 
   return (
     <div className="max-w-6xl mx-auto py-8 px-4">
+      {/* Upgrade Result Modal */}
+      <UpgradeResultModal 
+        isOpen={isUpgradeModalOpen}
+        onClose={() => setIsUpgradeModalOpen(false)}
+        onConfirm={handleConfirmUpgradeResult}
+        node={pendingUpgradeNode}
+        traits={traits}
+      />
+
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
@@ -392,6 +400,123 @@ export default function FusionPathPage() {
       />
     </div>
   );
+}
+
+function UpgradeResultModal({ isOpen, onClose, onConfirm, node, traits }: any) {
+    const [ability, setAbility] = useState(5);
+    const [activity, setActivity] = useState(5);
+    const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
+
+    const parentTraits = useMemo(() => {
+        if (!node) return [];
+        // Flatten all traits from left, right, and mids
+        const leftTraits = node.step.left.traitIds || [];
+        const rightTraits = node.step.right.traitIds || [];
+        const midTraits = node.step.mids.flatMap((m: any) => m.traitIds || []);
+        
+        const combined = Array.from(new Set([...leftTraits, ...rightTraits, ...midTraits]));
+        return combined.map(id => traits.find((t: any) => t.id === id)).filter(Boolean);
+    }, [node, traits]);
+
+    useEffect(() => {
+        if (isOpen && node) {
+            setSelectedTraits(node.step.target.traitIds || []);
+            // Set default ability/activity to the best possible from suggestion
+            setAbility(node.step.target.ability);
+            setActivity(node.step.target.activity);
+        }
+    }, [isOpen, node]);
+
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                className="relative w-full max-w-md bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden"
+            >
+                <div className="p-6 border-b border-gray-100 dark:border-gray-800 bg-amber-50/50 dark:bg-amber-900/10">
+                    <h2 className="text-xl font-black flex items-center gap-3 text-amber-600">
+                        <ArrowUpCircle />
+                        輸入合成結果
+                    </h2>
+                    <p className="text-xs text-gray-500 mt-1 font-bold">請根據遊戲內實際合成出的數值進行輸入</p>
+                </div>
+
+                <div className="p-6 space-y-6">
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">能力等級 (1-5)</label>
+                            <div className="flex gap-1">
+                                {[1,2,3,4,5].map(v => (
+                                    <button 
+                                        key={v} 
+                                        onClick={() => setAbility(v)}
+                                        className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${ability === v ? 'bg-amber-500 text-white shadow-lg shadow-amber-200' : 'bg-gray-100 dark:bg-gray-800 text-gray-400'}`}
+                                    >
+                                        {v}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">活躍等級 (1-5)</label>
+                            <div className="flex gap-1">
+                                {[1,2,3,4,5].map(v => (
+                                    <button 
+                                        key={v} 
+                                        onClick={() => setActivity(v)}
+                                        className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${activity === v ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-200' : 'bg-gray-100 dark:bg-gray-800 text-gray-400'}`}
+                                    >
+                                        {v}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="space-y-3">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center justify-between">
+                            繼承特性 (勾選保留的詞條)
+                            <span className="text-[10px] normal-case opacity-60">僅顯示素材擁有的詞條</span>
+                        </label>
+                        <div className="flex flex-wrap gap-2">
+                            {parentTraits.map((t: any) => (
+                                <button
+                                    key={t.id}
+                                    onClick={() => setSelectedTraits(prev => prev.includes(t.id) ? prev.filter(id => id !== t.id) : [...prev, t.id])}
+                                    className={`px-3 py-2 rounded-xl text-xs font-bold border-2 transition-all flex items-center gap-2 ${selectedTraits.includes(t.id) ? 'bg-emerald-50 border-emerald-500 text-emerald-700 dark:bg-emerald-900/20' : 'bg-white border-gray-100 text-gray-400 dark:bg-gray-800 dark:border-gray-700'}`}
+                                >
+                                    {selectedTraits.includes(t.id) ? <Check size={14} /> : <div className="w-[14px]" />}
+                                    {t.name}
+                                </button>
+                            ))}
+                            {parentTraits.length === 0 && (
+                                <div className="text-xs text-gray-400 italic">素材無任何特性</div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="p-6 bg-gray-50 dark:bg-gray-800/50 flex gap-3">
+                    <button 
+                        onClick={onClose}
+                        className="flex-1 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl font-bold text-gray-500 hover:bg-gray-100 transition-all"
+                    >
+                        取消
+                    </button>
+                    <button 
+                        onClick={() => onConfirm({ ability, activity, traits: selectedTraits })}
+                        className="flex-[2] py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black shadow-xl shadow-amber-200 dark:shadow-none transition-all active:scale-95 flex items-center justify-center gap-2"
+                    >
+                        確認並加入庫存
+                    </button>
+                </div>
+            </motion.div>
+        </div>
+    );
 }
 
 function InventoryDrawer({ isOpen, onClose, inventory, setInventory, abnormalities, traits, t }: any) {
