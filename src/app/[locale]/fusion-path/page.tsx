@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Plus, Trash2, Calculator, ChevronRight, ChevronDown, 
   Package, Sword, Info, X, Settings2, AlertCircle,
-  HelpCircle, ExternalLink, RefreshCcw
+  HelpCircle, ExternalLink, RefreshCcw, ArrowUpCircle, Check, Ban
 } from 'lucide-react';
 import { getAbnormalities, getTraits } from '@/lib/data';
 import { UserInventoryDeviant, Trait, MissingRequirement } from '@/types';
@@ -24,28 +24,25 @@ export default function FusionPathPage() {
   
   const { solve, loading } = useDeviantSolver();
   const [result, setResult] = useState<any>(null);
+  const [rejectedUpgradeIds, setRejectedUpgrades] = useState<Set<string>>(new Set());
 
   const targetAbnormality = useMemo(() => 
     abnormalities.find(a => a.id === targetAbnormalityId), 
     [targetAbnormalityId, abnormalities]
   );
 
-  // Dynamic Trait Filtering (Requirement 1: Logic fix)
+  // Dynamic Trait Filtering
   const filteredAvailableTraits = useMemo(() => {
     if (!targetAbnormality) return [];
     return traits.filter(trait => {
         const type = targetAbnormality.type;
         const name = targetAbnormality.name;
 
-        // Rule 1: boundSpecies match (exact name or type)
         if (trait.boundSpecies) {
             if (trait.boundSpecies === name) return true;
             if (trait.boundSpecies === type || trait.boundSpecies === `${type}型`) return true;
             return trait.boundSpecies === '造物/領地' && (type === '造物' || type === '領地');
-
         }
-        
-        // Rule 2 & 3: Category match or "通用"
         return trait.category === '通用' || trait.category === type;
     });
   }, [targetAbnormality, traits]);
@@ -72,6 +69,52 @@ export default function FusionPathPage() {
     setResult(res);
   };
 
+  const handleAcceptUpgrade = (node: any) => {
+    const step = node.step;
+    const p1Id = step.left.id;
+    const p2Id = step.right.id;
+    
+    const success = confirm(`${node.probabilityNote}\n\n是否成功升級為 5,5？\n(按下「確定」代表成功變為 5,5，按下「取消」代表升級失敗)`);
+    
+    let newInventory = inventory.filter(i => i.id !== p1Id && i.id !== p2Id);
+    
+    if (success) {
+        const newItem: UserInventoryDeviant = {
+            id: Math.random().toString(36).substr(2, 9),
+            abnormalityId: step.target.abnormalityId,
+            ability: 5,
+            activity: 5,
+            traits: [...step.target.traitIds],
+            count: 1
+        };
+        newInventory = [newItem, ...newInventory];
+        alert("庫存已更新：已移除父母素材並加入 5,5 成品。正在重新計算路徑...");
+    } else {
+        const ability = Math.max(step.left.ability, step.right.ability);
+        const activity = Math.max(step.left.activity, step.right.activity);
+        const newItem: UserInventoryDeviant = {
+            id: Math.random().toString(36).substr(2, 9),
+            abnormalityId: step.target.abnormalityId,
+            ability: ability === 5 ? 5 : 4,
+            activity: activity === 5 ? 5 : 4,
+            traits: [...step.target.traitIds],
+            count: 0 
+        };
+        newInventory = [newItem, ...newInventory];
+        alert("升級失敗。庫存已移除父母素材。");
+    }
+    
+    setInventory(newInventory);
+    setTimeout(() => {
+        const res = solve(newInventory, { targetAbnormalityId, desiredTraitIds: selectedTraitIds });
+        setResult(res);
+    }, 100);
+  };
+
+  const handleRejectUpgrade = (node: any) => {
+    setRejectedUpgrades(prev => new Set(prev).add(node.step.left.id + "_" + node.step.right.id));
+  };
+
   const handleDeduct = () => {
     if (!result || !result.steps) return;
     
@@ -83,16 +126,12 @@ export default function FusionPathPage() {
         if (!node) return;
         if (node.type === 'step') {
             const step = node.step;
-            
-            // Parents -> Count becomes 0
             const processParent = (p: any) => {
                 if (p.type === 'inventory') itemsToSetToZero.add(p.id);
                 else if (p.type === 'step') traverse(p);
             };
             processParent(step.left);
             processParent(step.right);
-
-            // Mids -> Permanently Deleted
             step.mids.forEach((m: any) => {
                 if (m.type === 'inventory') itemsToRemove.add(m.id);
                 else if (m.type === 'step') traverse(m);
@@ -106,7 +145,6 @@ export default function FusionPathPage() {
         .filter(item => !itemsToRemove.has(item.id))
         .map(item => itemsToSetToZero.has(item.id) ? { ...item, count: 0 } : item);
 
-    // Create the final product and add it to inventory
     const finalProduct: UserInventoryDeviant = {
         id: Math.random().toString(36).substr(2, 9),
         abnormalityId: targetAbnormalityId,
@@ -285,7 +323,7 @@ export default function FusionPathPage() {
                 )}
             </div>
 
-            {/* Missing Elements Summary (Requirement 4) */}
+            {/* Missing Elements Summary */}
             {!result.isPossible && result.missingElements.length > 0 && (
                 <div className="bg-amber-50 dark:bg-amber-900/10 border-2 border-amber-100 dark:border-amber-900/20 rounded-3xl p-6">
                     <h3 className="font-black text-amber-800 dark:text-amber-400 mb-4 flex items-center gap-2">
@@ -314,7 +352,10 @@ export default function FusionPathPage() {
                     depth={0} 
                     t={t} 
                     abnormalities={abnormalities} 
-                    traits={traits} 
+                    traits={traits}
+                    onAcceptUpgrade={handleAcceptUpgrade}
+                    onRejectUpgrade={handleRejectUpgrade}
+                    rejectedUpgradeIds={rejectedUpgradeIds}
                 />
             </div>
 
@@ -333,7 +374,6 @@ export default function FusionPathPage() {
         )}
       </AnimatePresence>
 
-      {/* Inventory Drawer (Requirement 1) */}
       <InventoryDrawer 
         isOpen={isInventoryOpen}
         onClose={() => setIsInventoryOpen(false)}
@@ -430,16 +470,11 @@ function InventoryItemCard({ item, abnormalities, traits, onUpdate, onRemove }: 
     return traits.filter((trait: any) => {
         const type = currentAb.type;
         const name = currentAb.name;
-
-        // Rule 1: boundSpecies match (exact name or type)
         if (trait.boundSpecies) {
             if (trait.boundSpecies === name) return true;
             if (trait.boundSpecies === type || trait.boundSpecies === `${type}型`) return true;
             return trait.boundSpecies === '造物/領地' && (type === '造物' || type === '領地');
-
         }
-        
-        // Rule 2 & 3: Category match or "通用"
         return trait.category === '通用' || trait.category === type;
     });
   }, [currentAb, traits]);
@@ -602,7 +637,7 @@ function TraitSelector({ traits, onSelect, selectedIds, small }: any) {
   );
 }
 
-function ResultNode({ node, depth, t, abnormalities, traits }: any) {
+function ResultNode({ node, depth, t, abnormalities, traits, onAcceptUpgrade, onRejectUpgrade, rejectedUpgradeIds }: any) {
   const [isExpanded, setIsExpanded] = useState(true);
 
   if (!node) return null;
@@ -626,7 +661,72 @@ function ResultNode({ node, depth, t, abnormalities, traits }: any) {
       );
   }
 
-  // Mutation Material Rendering
+  if (node.type === 'upgrade_suggestion') {
+      const isRejected = rejectedUpgradeIds.has(node.step.left.id + "_" + node.step.right.id);
+      
+      if (isRejected) {
+          const ab = abnormalities.find((a: any) => a.id === node.step.target.abnormalityId);
+          return (
+              <div className="p-4 bg-red-50 dark:bg-red-900/10 border-2 border-dashed border-red-200 dark:border-red-900/30 rounded-2xl flex flex-col gap-2">
+                  <div className="flex items-center gap-3">
+                      <div className="p-2 bg-red-500 text-white rounded-lg">
+                          <HelpCircle size={20} />
+                      </div>
+                      <div>
+                          <div className="text-xs text-red-600 dark:text-red-400 font-black uppercase">缺少組件</div>
+                          <div className="font-black text-lg text-red-700 dark:text-red-300">{ab?.name}</div>
+                      </div>
+                  </div>
+                  <div className="text-xs text-red-500 font-bold italic ml-11">
+                      原因: 缺少 5,5 等級的此物種異常物，且已拒絕升級建議。
+                  </div>
+              </div>
+          );
+      }
+
+      const ab = abnormalities.find((a: any) => a.id === node.step.target.abnormalityId);
+      return (
+          <div className="p-6 bg-amber-50 dark:bg-amber-900/10 border-2 border-amber-200 dark:border-amber-900/30 rounded-3xl space-y-4 shadow-lg">
+              <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                      <div className="p-3 bg-amber-500 text-white rounded-2xl shadow-lg shadow-amber-200 dark:shadow-none">
+                          <ArrowUpCircle size={28} />
+                      </div>
+                      <div>
+                          <div className="text-[10px] text-amber-600 dark:text-amber-400 font-black uppercase tracking-widest">💡 可能的升級路徑</div>
+                          <div className="font-black text-xl">是否嘗試將 {ab?.name} 升級至 5,5？</div>
+                      </div>
+                  </div>
+                  <div className="flex gap-2">
+                      <button 
+                        onClick={() => onAcceptUpgrade(node)}
+                        className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-black flex items-center gap-2 transition-all active:scale-95"
+                      >
+                          <Check size={16} /> 接受並合成
+                      </button>
+                      <button 
+                        onClick={() => onRejectUpgrade(node)}
+                        className="px-4 py-2 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-xl text-sm font-black flex items-center gap-2 transition-all active:scale-95"
+                      >
+                          <Ban size={16} /> 拒絕
+                      </button>
+                  </div>
+              </div>
+              <div className="p-4 bg-white/50 dark:bg-black/20 rounded-2xl text-xs text-amber-700 dark:text-amber-300 font-bold leading-relaxed border border-amber-100 dark:border-amber-900/30">
+                  {node.probabilityNote}
+              </div>
+              <div className="pl-6 border-l-4 border-amber-200 dark:border-amber-800 space-y-4">
+                  <div className="text-[10px] font-black text-amber-600 uppercase">預計升級公式：</div>
+                  <ResultNode 
+                    node={{ type: 'step', step: node.step }} 
+                    depth={depth + 1} t={t} abnormalities={abnormalities} traits={traits} 
+                    onAcceptUpgrade={onAcceptUpgrade} onRejectUpgrade={onRejectUpgrade} rejectedUpgradeIds={rejectedUpgradeIds}
+                  />
+              </div>
+          </div>
+      );
+  }
+
   if (node.type === 'mutation_material') {
     return (
         <div className="p-4 bg-purple-50 dark:bg-purple-900/10 border-2 border-purple-200 dark:border-purple-900/20 rounded-2xl flex items-center justify-between shadow-sm">
@@ -723,7 +823,7 @@ function ResultNode({ node, depth, t, abnormalities, traits }: any) {
                     <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></div>
                     {t('leftParent')}
                 </div>
-                <ResultNode node={step.left} depth={depth + 1} t={t} abnormalities={abnormalities} traits={traits} />
+                <ResultNode node={step.left} depth={depth + 1} t={t} abnormalities={abnormalities} traits={traits} onAcceptUpgrade={onAcceptUpgrade} onRejectUpgrade={onRejectUpgrade} rejectedUpgradeIds={rejectedUpgradeIds} />
               </div>
               
               <div className="relative">
@@ -732,7 +832,7 @@ function ResultNode({ node, depth, t, abnormalities, traits }: any) {
                     <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
                     {t('rightParent')}
                 </div>
-                <ResultNode node={step.right} depth={depth + 1} t={t} abnormalities={abnormalities} traits={traits} />
+                <ResultNode node={step.right} depth={depth + 1} t={t} abnormalities={abnormalities} traits={traits} onAcceptUpgrade={onAcceptUpgrade} onRejectUpgrade={onRejectUpgrade} rejectedUpgradeIds={rejectedUpgradeIds} />
               </div>
 
               {step.mids.length > 0 && (
@@ -741,7 +841,7 @@ function ResultNode({ node, depth, t, abnormalities, traits }: any) {
                   <div className="text-[10px] font-black text-gray-400 uppercase">{t('midIngredients')}</div>
                   <div className="space-y-2">
                     {step.mids.map((midNode: any, idx: number) => (
-                      <ResultNode key={idx} node={midNode} depth={depth + 1} t={t} abnormalities={abnormalities} traits={traits} />
+                      <ResultNode key={idx} node={midNode} depth={depth + 1} t={t} abnormalities={abnormalities} traits={traits} onAcceptUpgrade={onAcceptUpgrade} onRejectUpgrade={onRejectUpgrade} rejectedUpgradeIds={rejectedUpgradeIds} />
                     ))}
                   </div>
                 </div>

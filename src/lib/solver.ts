@@ -268,18 +268,54 @@ export function calculateFusionPath(
 
             const left: FusionNode = { type: 'inventory', id: p1.id, abnormalityId: p1.abnormalityId, traitIds: p1.traits, ability: p1.ability, activity: p1.activity };
             const right: FusionNode = { type: 'inventory', id: p2.id, abnormalityId: p2.abnormalityId, traitIds: p2.traits, ability: p2.ability, activity: p2.activity };
-            
+
             const config = evaluateStepConfig(targetAbnormalityId, neededTraitIds, left, right, tempCounts);
             const node: FusionNode = { type: 'step', step: { target: { abnormalityId: targetAbnormalityId, traitIds: neededTraitIds, ability: 5, activity: 5 }, left, right, mids: config.mids, isPartial: !config.safety.isSafe } };
-            
+
             const res = { node, updatedCounts: tempCounts, safety: config.safety };
             config.consumedIds.forEach(id => res.updatedCounts.set(id, (res.updatedCounts.get(id) || 1) - 1));
-            
+
             if (res.safety.isSafe) return res;
             bestOverall = compareResults(bestOverall, res);
         }
-    }
+    } else {
+        // Scenario 4: Upgrade Suggestion (5,4 + 4,5)
+        const p54 = inventory.find(i => i.abnormalityId === targetAbnormalityId && i.ability === 5 && i.activity === 4 && (currentCounts.get(i.id) || 0) > 0);
+        const p45 = inventory.find(i => i.abnormalityId === targetAbnormalityId && i.ability === 4 && i.activity === 5 && (currentCounts.get(i.id) || 0) > 0);
 
+        if (p54 && p45) {
+            const tempCounts = new Map(currentCounts);
+            tempCounts.set(p54.id, (tempCounts.get(p54.id) || 1) - 1);
+            tempCounts.set(p45.id, (tempCounts.get(p45.id) || 1) - 1);
+
+            const left: FusionNode = { type: 'inventory', id: p54.id, abnormalityId: p54.abnormalityId, traitIds: p54.traits, ability: p54.ability, activity: p54.activity };
+            const right: FusionNode = { type: 'inventory', id: p45.id, abnormalityId: p45.abnormalityId, traitIds: p45.traits, ability: p45.ability, activity: p45.activity };
+
+            // For upgrade, we check if it can maintain the needed traits. 
+            // We only consider traits that these parents actually carry and are needed.
+            const traitsInUpgrade = neededTraitIds.filter(tid => p54.traits.includes(tid) || p45.traits.includes(tid));
+            const config = evaluateStepConfig(targetAbnormalityId, traitsInUpgrade, left, right, tempCounts);
+
+            // Only suggest if the upgrade itself is safe for the traits it carries
+            if (config.safety.isSafe) {
+                const node: FusionNode = { 
+                    type: 'upgrade_suggestion', 
+                    step: { 
+                        target: { abnormalityId: targetAbnormalityId, traitIds: traitsInUpgrade, ability: 5, activity: 5 }, 
+                        left, 
+                        right, 
+                        mids: config.mids 
+                    },
+                    probabilityNote: "⚠️ 提示：此路徑為「機率性升級」，合成結果有機會從 5,4 + 4,5 提升為 5,5，但並非 100% 成功。"
+                };
+                const res = { node, updatedCounts: tempCounts, safety: config.safety };
+                config.consumedIds.forEach(id => res.updatedCounts.set(id, (res.updatedCounts.get(id) || 1) - 1));
+
+                // Return this as a high-priority "almost there" result
+                return res;
+            }
+        }
+    }
     // 3. Recursive Fallback (Try all distinct dummy species for p2)
     const leftTraits = neededTraitIds.slice(0, Math.ceil(neededTraitIds.length / 2));
     const rightTraits = neededTraitIds.slice(Math.ceil(neededTraitIds.length / 2));

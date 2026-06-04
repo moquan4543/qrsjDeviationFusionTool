@@ -63,7 +63,8 @@ export type FusionNode =
   | { type: 'inventory'; id: string; abnormalityId: string; traitIds: string[]; ability: number; activity: number }
   | { type: 'step'; step: FusionStep }
   | { type: 'mutation_material'; traitId: string; traitName: string; materialName: string }
-  | { type: 'missing'; requirement: MissingRequirement };
+  | { type: 'missing'; requirement: MissingRequirement }
+  | { type: 'upgrade_suggestion'; step: FusionStep; probabilityNote: string };
 
 export interface MissingRequirement {
   type: 'species' | 'trait' | 'blank_55_fodder';
