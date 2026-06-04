@@ -46,6 +46,25 @@ export interface GoalConfiguration {
   desiredTraitIds: string[];
 }
 
+export interface FusionStep {
+  target: {
+    abnormalityId: string;
+    traitIds: string[];
+    ability: number;
+    activity: number;
+  };
+  left: FusionNode;
+  right: FusionNode;
+  mids: FusionNode[];
+  isPartial?: boolean;
+}
+
+export type FusionNode = 
+  | { type: 'inventory'; id: string; abnormalityId: string; traitIds: string[]; ability: number; activity: number }
+  | { type: 'step'; step: FusionStep }
+  | { type: 'mutation_material'; traitId: string; traitName: string; materialName: string }
+  | { type: 'missing'; requirement: MissingRequirement };
+
 export interface MissingRequirement {
   type: 'species' | 'trait' | 'blank_55_fodder';
   name: string;
@@ -53,7 +72,7 @@ export interface MissingRequirement {
 }
 
 export interface SolverResult {
-  steps: any; // Keep as any or FusionStep for now to avoid circular deps in types
+  steps: FusionNode;
   missingElements: MissingRequirement[];
   isPossible: boolean;
 }
