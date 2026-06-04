@@ -31,33 +31,10 @@ export const useDeviantSolver = () => {
     setLoading(true);
     const abnormalities = getAbnormalities();
     const allTraits = getTraits();
-    const missingElements: MissingRequirement[] = [];
-
-    const inventoryCounts = new Map<string, number>();
-    inventory.forEach(item => inventoryCounts.set(item.id, 1)); // Each entry is a unique instance
-
-    const isAvailable = (item: UserInventoryDeviant) => (inventoryCounts.get(item.id) ?? 0) > 0;
-    const consumeItem = (item: UserInventoryDeviant) => {
-        inventoryCounts.set(item.id, (inventoryCounts.get(item.id) ?? 1) - 1);
-    };
-
-    const find55Parent = (abId: string | undefined, excludeIds: Set<string> = new Set()): UserInventoryDeviant | undefined => {
-        // Try exact species first
-        const exact = abId ? inventory.find(item => 
-            item.abnormalityId === abId && 
-            item.ability === 5 && item.activity === 5 &&
-            isAvailable(item) &&
-            !excludeIds.has(item.id)
-        ) : undefined;
-        if (exact) return exact;
-
-        // Fallback to any 5,5 fodder as a dummy parent
-        return inventory.find(item => 
-            item.ability === 5 && item.activity === 5 &&
-            isAvailable(item) &&
-            !excludeIds.has(item.id)
-        );
-    };
+    
+    // Each entry is a unique instance
+    const initialCounts = new Map<string, number>();
+    inventory.forEach(item => initialCounts.set(item.id, 1));
 
     const checkStepSafety = (
         targetAbnormalityId: string,
@@ -69,9 +46,6 @@ export const useDeviantSolver = () => {
         const traitFreq = new Map<string, number>();
         const categoryFreq = new Map<string, number>();
         
-        // Species Weight Logic (Fix 7/8 specific interpretation)
-        // Offspring species is rolled between parents and applicable mid-slot items.
-        // We identify the species of the two parents.
         const getSpecies = (node: FusionNode) => {
             if (node.type === 'inventory') return node.abnormalityId;
             if (node.type === 'step') return node.step.target.abnormalityId;
@@ -80,8 +54,6 @@ export const useDeviantSolver = () => {
         const leftSpecies = getSpecies(left);
         const rightSpecies = getSpecies(right);
         
-        // Applicable species for the roll are the target species and the other parent's species.
-        // Any third species in mid slots is typically ignored for the offspring species roll in this implementation.
         let targetSpeciesPoints = 0;
         let otherParentSpeciesPoints = 0;
 
@@ -102,7 +74,7 @@ export const useDeviantSolver = () => {
                 nodeSpecies = node.step.target.abnormalityId;
             } else if (node.type === 'mutation_material') {
                 nodeTraits = [node.traitId];
-                multiplier = 2; // Mutation materials count double
+                multiplier = 2;
             }
 
             if (nodeSpecies) {
@@ -111,11 +83,8 @@ export const useDeviantSolver = () => {
                 } else if (nodeSpecies === rightSpecies || nodeSpecies === leftSpecies) {
                     otherParentSpeciesPoints += 1;
                 }
-                // Note: Third species (neither T nor D) are effectively excluded from the denominator
-                // to allow trait-carrying fodders to not pollute the species roll.
             }
 
-            // An item increments the counter for ALL of its traits at once
             nodeTraits.forEach(tid => {
                 const traitMeta = allTraits.find(t => t.id === tid);
                 const cat = traitMeta?.category || '通用';
@@ -147,82 +116,58 @@ export const useDeviantSolver = () => {
         };
     };
 
-    const enforceInheritance = (node: FusionNode, targetAbnormalityId: string, targetTraits: string[]): FusionNode => {
-        if (node.type !== 'step') return node;
-        
-        const step = node.step;
-        
-        // Step 1: Identify Mutation Requirements
+    const getCombinations = <T>(array: T[], n: number): T[][] => {
+        if (n === 0) return [[]];
+        const result: T[][] = [];
+        for (let i = 0; i <= array.length - n; i++) {
+            const subCombos = getCombinations(array.slice(i + 1), n - 1);
+            for (const sub of subCombos) {
+                result.push([array[i], ...sub]);
+            }
+        }
+        return result;
+    };
+
+    const evaluateStepConfig = (
+        targetAbnormalityId: string,
+        targetTraits: string[],
+        left: FusionNode,
+        right: FusionNode,
+        currentCounts: Map<string, number>
+    ): { mids: FusionNode[], safety: any, consumedIds: string[] } => {
         const mandatoryMids: FusionNode[] = [];
         targetTraits.forEach(tid => {
             const trait = allTraits.find(t => t.id === tid);
             if (trait?.category === '變異') {
                 const materialName = trait.description.match(/【(.*?)】/) ? trait.description.match(/【(.*?)】/)![1] : "指定變異材料";
-                mandatoryMids.push({
-                    type: 'mutation_material',
-                    traitId: tid,
-                    traitName: trait.name,
-                    materialName: materialName
-                });
+                mandatoryMids.push({ type: 'mutation_material', traitId: tid, traitName: trait.name, materialName: materialName });
             }
         });
 
-        // Step 2: Gather Candidate Pool
         const remainingSlots = Math.max(0, 3 - mandatoryMids.length);
-        const candidatePool: UserInventoryDeviant[] = [];
-        
-        inventory.forEach(item => {
-            const count = inventoryCounts.get(item.id) || 0;
-            if (count <= 0) return;
-            
-            const matchesSpecies = item.abnormalityId === targetAbnormalityId;
-            const matchesTraits = targetTraits.some(tt => item.traits.includes(tt));
-            
-            if (matchesSpecies || matchesTraits) {
-                // Add up to 'remainingSlots' instances of this item to the pool
-                const toAdd = Math.min(count, remainingSlots);
-                for (let i = 0; i < toAdd; i++) {
-                    candidatePool.push(item);
-                }
-            }
-        });
+        const candidatePool = inventory.filter(item => 
+            (currentCounts.get(item.id) || 0) > 0 &&
+            (item.abnormalityId === targetAbnormalityId || targetTraits.some(tt => item.traits.includes(tt)))
+        );
 
-        // Sort to prioritize items with more target traits, then species match, then higher stats
         candidatePool.sort((a, b) => {
             const aTraits = targetTraits.filter(tt => a.traits.includes(tt)).length;
             const bTraits = targetTraits.filter(tt => b.traits.includes(tt)).length;
             if (aTraits !== bTraits) return bTraits - aTraits;
-            
             const aSpecies = a.abnormalityId === targetAbnormalityId ? 1 : 0;
             const bSpecies = b.abnormalityId === targetAbnormalityId ? 1 : 0;
             if (aSpecies !== bSpecies) return bSpecies - aSpecies;
-
             return (b.ability + b.activity) - (a.ability + a.activity);
         });
 
         const limitedPool = candidatePool.slice(0, 12);
-
-        // Step 3: Permutation Search (Combinations)
-        const getCombinations = <T>(array: T[], n: number): T[][] => {
-            if (n === 0) return [[]];
-            const result: T[][] = [];
-            for (let i = 0; i <= array.length - n; i++) {
-                const subCombos = getCombinations(array.slice(i + 1), n - 1);
-                for (const sub of subCombos) {
-                    result.push([array[i], ...sub]);
-                }
-            }
-            return result;
-        };
-
-        let bestResult: { mids: FusionNode[], safety: any } | null = null;
+        let bestResult: { mids: FusionNode[], safety: any, consumedIds: string[] } | null = null;
         let foundSafe = false;
 
-        // Try combinations of size 0 up to remainingSlots
         for (let count = 0; count <= remainingSlots; count++) {
             const combos = getCombinations(limitedPool, count);
             for (const combo of combos) {
-                const currentMids = [
+                const currentMids: FusionNode[] = [
                     ...mandatoryMids,
                     ...combo.map(item => ({
                         type: 'inventory' as const,
@@ -234,171 +179,167 @@ export const useDeviantSolver = () => {
                     }))
                 ];
                 
-                const safety = checkStepSafety(targetAbnormalityId, targetTraits, step.left, step.right, currentMids);
+                const safety = checkStepSafety(targetAbnormalityId, targetTraits, left, right, currentMids);
+                const consumedIds = combo.map(i => i.id);
+
                 if (safety.isSafe) {
-                    bestResult = { mids: currentMids, safety };
+                    bestResult = { mids: currentMids, safety, consumedIds };
                     foundSafe = true;
                     break;
                 }
                 
-                // Track best effort: fewer missing traits, then species safety
                 if (!bestResult || 
                     safety.missingTraits.length < bestResult.safety.missingTraits.length ||
                     (safety.missingTraits.length === bestResult.safety.missingTraits.length && safety.isSpeciesSafe && !bestResult.safety.isSpeciesSafe)) {
-                    bestResult = { mids: currentMids, safety };
+                    bestResult = { mids: currentMids, safety, consumedIds };
                 }
             }
             if (foundSafe) break;
         }
 
-        if (bestResult) {
-            step.mids = bestResult.mids;
-            if (!bestResult.safety.isSafe) {
-                step.isPartial = true;
-                // Add missing nodes as fallback
-                bestResult.safety.missingTraits.forEach((tid: string) => {
-                    const trait = allTraits.find(t => t.id === tid);
-                    const traitName = trait?.name || tid;
-                    step.mids.push({
-                        type: 'missing',
-                        requirement: {
-                            type: 'trait',
-                            name: traitName,
-                            purpose: `繼承機率未達 100%（需出現 2 次且佔比 >= 66.7%）。`
-                        }
-                    });
-                });
-                if (!bestResult.safety.isSpeciesSafe) {
-                    const abName = abnormalities.find(a => a.id === targetAbnormalityId)?.name || targetAbnormalityId;
-                    step.mids.push({
-                        type: 'missing',
-                        requirement: {
-                            type: 'species',
-                            name: abName,
-                            purpose: `物種權重不足 (需 >= 66.7%)。`
-                        }
-                    });
-                }
-            }
-
-            // Consume picked items
-            bestResult.mids.forEach(m => {
-                if (m.type === 'inventory') {
-                    const item = inventory.find(i => i.id === m.id);
-                    if (item) consumeItem(item);
-                }
+        if (bestResult && !bestResult.safety.isSafe) {
+            const midsWithMissing = [...bestResult.mids];
+            bestResult.safety.missingTraits.forEach((tid: string) => {
+                const trait = allTraits.find(t => t.id === tid);
+                midsWithMissing.push({ type: 'missing', requirement: { type: 'trait', name: trait?.name || tid, purpose: `繼承機率未達 100%` } });
             });
+            if (!bestResult.safety.isSpeciesSafe) {
+                const abName = abnormalities.find(a => a.id === targetAbnormalityId)?.name || targetAbnormalityId;
+                midsWithMissing.push({ type: 'missing', requirement: { type: 'species', name: abName, purpose: `物種權重不足` } });
+            }
+            return { ...bestResult, mids: midsWithMissing };
         }
 
-        return node;
+        return bestResult || { mids: [], safety: { isSafe: false, missingTraits: targetTraits, isSpeciesSafe: false }, consumedIds: [] };
+    };
+
+    const compareResults = (
+        a: { node: FusionNode, updatedCounts: Map<string, number>, safety: any } | null, 
+        b: { node: FusionNode, updatedCounts: Map<string, number>, safety: any }
+    ) => {
+        if (!a) return b;
+        if (b.node.type === 'missing') return a;
+        if (a.safety.isSafe && !b.safety.isSafe) return a;
+        if (!a.safety.isSafe && b.safety.isSafe) return b;
+        if (a.safety.missingTraits.length !== b.safety.missingTraits.length) {
+            return a.safety.missingTraits.length < b.safety.missingTraits.length ? a : b;
+        }
+        if (a.safety.isSpeciesSafe && !b.safety.isSpeciesSafe) return a;
+        if (!a.safety.isSpeciesSafe && b.safety.isSpeciesSafe) return b;
+        return a;
     };
 
     const findPath = (
         targetAbnormalityId: string, 
         neededTraitIds: string[], 
+        currentCounts: Map<string, number>,
         depth: number = 0, 
         visited: Set<string> = new Set()
-    ): FusionNode => {
+    ): { node: FusionNode, updatedCounts: Map<string, number>, safety: any } => {
       const targetAb = abnormalities.find(a => a.id === targetAbnormalityId);
       const abName = targetAb?.name || targetAbnormalityId;
 
-      if (depth > 8) {
-        return { type: 'missing', requirement: { type: 'species', name: abName, purpose: "超過最大遞迴深度" } };
-      }
+      const returnMissing = (purpose: string) => ({
+          node: { type: 'missing' as const, requirement: { type: 'species' as const, name: abName, purpose } },
+          updatedCounts: currentCounts,
+          safety: { isSafe: false, missingTraits: neededTraitIds, isSpeciesSafe: false }
+      });
 
+      if (depth > 8) return returnMissing("超過最大遞迴深度");
       const sortedTraits = [...neededTraitIds].sort();
       const currentPathKey = `${targetAbnormalityId}:${sortedTraits.join(',')}`;
-      if (visited.has(currentPathKey)) {
-          return { 
-              type: 'missing', 
-              requirement: { 
-                  type: 'species', 
-                  name: abName, 
-                  purpose: "檢測到無限遞迴（目標重複要求自身作為父本）" 
-              } 
-          };
-      }
+      if (visited.has(currentPathKey)) return returnMissing("檢測到無限遞迴");
       
       const newVisited = new Set(visited);
       newVisited.add(currentPathKey);
 
-      // 1. Exact Match Check (Inventory)
+      // 1. Exact Match Check
       const exactMatch = inventory.find(item => 
           item.abnormalityId === targetAbnormalityId && 
           item.ability === 5 && item.activity === 5 &&
           neededTraitIds.every(nt => item.traits.includes(nt)) &&
-          isAvailable(item)
+          (currentCounts.get(item.id) || 0) > 0
       );
       if (exactMatch) {
-          consumeItem(exactMatch);
+          const nextCounts = new Map(currentCounts);
+          nextCounts.set(exactMatch.id, (nextCounts.get(exactMatch.id) || 1) - 1);
           return { 
-              type: 'inventory', 
-              id: exactMatch.id, 
-              abnormalityId: exactMatch.abnormalityId, 
-              traitIds: exactMatch.traits,
-              ability: exactMatch.ability,
-              activity: exactMatch.activity
+              node: { type: 'inventory', id: exactMatch.id, abnormalityId: exactMatch.abnormalityId, traitIds: exactMatch.traits, ability: exactMatch.ability, activity: exactMatch.activity }, 
+              updatedCounts: nextCounts,
+              safety: { isSafe: true, missingTraits: [], isSpeciesSafe: true }
           };
       }
 
-      // 2. Inventory-First Strategy (Multi-Species Proxy Rule)
-      const p1 = find55Parent(targetAbnormalityId);
-      if (p1) {
-          const p2 = find55Parent(targetAbnormalityId, new Set([p1.id])) || find55Parent(undefined, new Set([p1.id]));
-          if (p2) {
-              consumeItem(p1);
-              consumeItem(p2);
+      // Identify potential 5,5 parents
+      const p1Candidates = inventory.filter(item => 
+          item.abnormalityId === targetAbnormalityId && item.ability === 5 && item.activity === 5 && (currentCounts.get(item.id) || 0) > 0
+      );
+      const all55 = inventory.filter(item => item.ability === 5 && item.activity === 5 && (currentCounts.get(item.id) || 0) > 0);
+
+      let bestOverall: { node: FusionNode, updatedCounts: Map<string, number>, safety: any } | null = null;
+
+      // 2. Inventory-First Strategy (Try all distinct dummy species)
+      if (p1Candidates.length > 0) {
+          const p1 = p1Candidates[0];
+          const p2Candidates = all55.filter(i => i.id !== p1.id);
+          const p2Groups = new Map<string, UserInventoryDeviant>();
+          p2Candidates.forEach(c => { if (!p2Groups.has(c.abnormalityId)) p2Groups.set(c.abnormalityId, c); });
+
+          for (const p2 of p2Groups.values()) {
+              const tempCounts = new Map(currentCounts);
+              tempCounts.set(p1.id, (tempCounts.get(p1.id) || 1) - 1);
+              tempCounts.set(p2.id, (tempCounts.get(p2.id) || 1) - 1);
+
+              const left: FusionNode = { type: 'inventory', id: p1.id, abnormalityId: p1.abnormalityId, traitIds: p1.traits, ability: p1.ability, activity: p1.activity };
+              const right: FusionNode = { type: 'inventory', id: p2.id, abnormalityId: p2.abnormalityId, traitIds: p2.traits, ability: p2.ability, activity: p2.activity };
               
-              const step: FusionStep = {
-                  target: { abnormalityId: targetAbnormalityId, traitIds: neededTraitIds, ability: 5, activity: 5 },
-                  left: { type: 'inventory', id: p1.id, abnormalityId: p1.abnormalityId, traitIds: p1.traits, ability: p1.ability, activity: p1.activity },
-                  right: { type: 'inventory', id: p2.id, abnormalityId: p2.abnormalityId, traitIds: p2.traits, ability: p2.ability, activity: p2.activity },
-                  mids: [],
-                  isPartial: false
-              };
+              const config = evaluateStepConfig(targetAbnormalityId, neededTraitIds, left, right, tempCounts);
+              const node: FusionNode = { type: 'step', step: { target: { abnormalityId: targetAbnormalityId, traitIds: neededTraitIds, ability: 5, activity: 5 }, left, right, mids: config.mids, isPartial: !config.safety.isSafe } };
               
-              return enforceInheritance({ type: 'step', step }, targetAbnormalityId, neededTraitIds);
+              const res = { node, updatedCounts: tempCounts, safety: config.safety };
+              config.consumedIds.forEach(id => res.updatedCounts.set(id, (res.updatedCounts.get(id) || 1) - 1));
+              
+              if (res.safety.isSafe) return res;
+              bestOverall = compareResults(bestOverall, res);
           }
       }
 
-      // 3. Recursive Fallback
+      // 3. Recursive Fallback (Try all distinct dummy species for p2)
       const leftTraits = neededTraitIds.slice(0, Math.ceil(neededTraitIds.length / 2));
       const rightTraits = neededTraitIds.slice(Math.ceil(neededTraitIds.length / 2));
 
-      const leftNode = findPath(targetAbnormalityId, leftTraits, depth + 1, newVisited);
+      const { node: leftNode, updatedCounts: afterLeftCounts } = findPath(targetAbnormalityId, leftTraits, currentCounts, depth + 1, newVisited);
       
-      const inventoryP2 = find55Parent(undefined); 
-      let rightNode: FusionNode;
-      if (inventoryP2 && leftNode.type !== 'missing') {
-           consumeItem(inventoryP2);
-           rightNode = { 
-               type: 'inventory', 
-               id: inventoryP2.id, 
-               abnormalityId: inventoryP2.abnormalityId, 
-               traitIds: inventoryP2.traits, 
-               ability: 5, 
-               activity: 5 
-           };
-      } else {
-           rightNode = findPath(targetAbnormalityId, rightTraits, depth + 1, newVisited);
+      const p2CandidatesRec = inventory.filter(item => item.ability === 5 && item.activity === 5 && (afterLeftCounts.get(item.id) || 0) > 0);
+      const p2GroupsRec = new Map<string, UserInventoryDeviant>();
+      p2CandidatesRec.forEach(c => { if (!p2GroupsRec.has(c.abnormalityId)) p2GroupsRec.set(c.abnormalityId, c); });
+
+      for (const p2 of p2GroupsRec.values()) {
+          const tempCounts = new Map(afterLeftCounts);
+          tempCounts.set(p2.id, (tempCounts.get(p2.id) || 1) - 1);
+          const rightNode: FusionNode = { type: 'inventory', id: p2.id, abnormalityId: p2.abnormalityId, traitIds: p2.traits, ability: 5, activity: 5 };
+          const config = evaluateStepConfig(targetAbnormalityId, neededTraitIds, leftNode, rightNode, tempCounts);
+          const node: FusionNode = { type: 'step', step: { target: { abnormalityId: targetAbnormalityId, traitIds: neededTraitIds, ability: 5, activity: 5 }, left: leftNode, right: rightNode, mids: config.mids, isPartial: !config.safety.isSafe || leftNode.type === 'missing' } };
+          const res = { node, updatedCounts: tempCounts, safety: config.safety };
+          config.consumedIds.forEach(id => res.updatedCounts.set(id, (res.updatedCounts.get(id) || 1) - 1));
+          
+          if (res.safety.isSafe && leftNode.type !== 'missing') return res;
+          bestOverall = compareResults(bestOverall, res);
       }
 
-      const resStep: FusionNode = {
-        type: 'step',
-        step: {
-          target: { abnormalityId: targetAbnormalityId, traitIds: neededTraitIds, ability: 5, activity: 5 },
-          left: leftNode,
-          right: rightNode,
-          mids: [],
-          isPartial: leftNode.type === 'missing' || rightNode.type === 'missing'
-        }
-      };
-
-      return enforceInheritance(resStep, targetAbnormalityId, neededTraitIds);
+      // Double Recursion (Absolute Fallback)
+      const { node: rightNodeRec, updatedCounts: afterBothCounts } = findPath(targetAbnormalityId, rightTraits, afterLeftCounts, depth + 1, newVisited);
+      const configFinal = evaluateStepConfig(targetAbnormalityId, neededTraitIds, leftNode, rightNodeRec, afterBothCounts);
+      const finalNode: FusionNode = { type: 'step', step: { target: { abnormalityId: targetAbnormalityId, traitIds: neededTraitIds, ability: 5, activity: 5 }, left: leftNode, right: rightNodeRec, mids: configFinal.mids, isPartial: !configFinal.safety.isSafe || leftNode.type === 'missing' || rightNodeRec.type === 'missing' } };
+      const finalRes = { node: finalNode, updatedCounts: afterBothCounts, safety: configFinal.safety };
+      configFinal.consumedIds.forEach(id => finalRes.updatedCounts.set(id, (finalRes.updatedCounts.get(id) || 1) - 1));
+      
+      return compareResults(bestOverall, finalRes);
     };
 
-    const root = findPath(goal.targetAbnormalityId, goal.desiredTraitIds, 0, new Set());
+    const { node: root, safety } = findPath(goal.targetAbnormalityId, goal.desiredTraitIds, initialCounts, 0, new Set());
 
+    const missingElements: MissingRequirement[] = [];
     const collectMissing = (node: FusionNode) => {
         if (node.type === 'missing') {
             if (!missingElements.find(m => m.name === node.requirement.name && m.type === node.requirement.type && m.purpose === node.requirement.purpose)) {
