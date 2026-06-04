@@ -1,0 +1,43 @@
+[
+  {
+    "id": "xu17mx4zy",
+    "abnormalityId": "A042",
+    "ability": 1,
+    "activity": 1,
+    "traits": [
+      "T015",
+      "T232"
+    ],
+    "count": 0
+  },
+  {
+    "id": "uounz906f",
+    "abnormalityId": "A056",
+    "ability": 4,
+    "activity": 5,
+    "traits": [
+      "T232",
+      "T260"
+    ],
+    "count": 0
+  },
+  {
+    "id": "irls2okb6",
+    "abnormalityId": "A042",
+    "ability": 5,
+    "activity": 5,
+    "traits": [
+      "T015",
+      "T242"
+    ],
+    "count": 1
+  },
+  {
+    "id": "ykasb68nt",
+    "abnormalityId": "A006",
+    "ability": 5,
+    "activity": 5,
+    "traits": [],
+    "count": 1
+  }
+]
