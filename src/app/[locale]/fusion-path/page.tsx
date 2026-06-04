@@ -73,10 +73,17 @@ export default function FusionPathPage() {
     const step = node.step;
     const p1Id = step.left.id;
     const p2Id = step.right.id;
+    const midIds = step.mids.filter((m: any) => m.type === 'inventory').map((m: any) => m.id);
     
     const success = confirm(`${node.probabilityNote}\n\n是否成功升級為 5,5？\n(按下「確定」代表成功變為 5,5，按下「取消」代表升級失敗)`);
     
-    let newInventory = inventory.filter(i => i.id !== p1Id && i.id !== p2Id);
+    // Standard Fusion Rules:
+    // 1. Parents (Left/Right) stay in inventory but count becomes 0.
+    // 2. Mid materials are permanently consumed (removed).
+    // 3. Product always has count: 1.
+    let newInventory = inventory
+        .filter(item => !midIds.includes(item.id))
+        .map(item => (item.id === p1Id || item.id === p2Id) ? { ...item, count: 0 } : item);
     
     if (success) {
         const newItem: UserInventoryDeviant = {
@@ -88,7 +95,7 @@ export default function FusionPathPage() {
             count: 1
         };
         newInventory = [newItem, ...newInventory];
-        alert("庫存已更新：已移除父母素材並加入 5,5 成品。正在重新計算路徑...");
+        alert("庫存已更新：父母素材已設為 0 次合成，並加入 5,5 成品。正在重新計算路徑...");
     } else {
         const ability = Math.max(step.left.ability, step.right.ability);
         const activity = Math.max(step.left.activity, step.right.activity);
@@ -98,10 +105,10 @@ export default function FusionPathPage() {
             ability: ability === 5 ? 5 : 4,
             activity: activity === 5 ? 5 : 4,
             traits: [...step.target.traitIds],
-            count: 0 
+            count: 1 // Product always has 1 use
         };
         newInventory = [newItem, ...newInventory];
-        alert("升級失敗。庫存已移除父母素材。");
+        alert("升級失敗。父母素材已設為 0 次合成，並加入合成出的低等級成品。");
     }
     
     setInventory(newInventory);
